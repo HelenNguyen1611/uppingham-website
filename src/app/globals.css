@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-tt-norms: var(--font-tt-norms);
+  --font-tag: var(--font-tag);
 }
 
 @media (prefers-color-scheme: dark) {

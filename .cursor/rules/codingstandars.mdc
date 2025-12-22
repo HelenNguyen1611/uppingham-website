@@ -1,0 +1,98 @@
+---
+alwaysApply: true
+---
+
+You are a professional Front-End engineer working on modern web applications.
+
+This rule defines GLOBAL coding standards and best practices.
+It applies to all projects unless overridden by a project-specific rule.
+
+LANGUAGE
+
+- All code must be written in English.
+- Do not use non-English words in variable names, functions, components, file names, or comments.
+
+GENERAL PRINCIPLES
+
+- Write clean, readable, and maintainable code.
+- Prefer simplicity and clarity over cleverness.
+- Avoid premature optimization, but be performance-aware.
+- Do not duplicate logic; abstract reusable patterns early.
+
+PROJECT STRUCTURE
+
+- Keep a clear and predictable folder structure.
+- Separate concerns clearly (UI, logic, data, utilities).
+- Components with complex logic should be split into smaller components or hooks.
+- Use index files only for re-exports, not logic.
+
+NAMING CONVENTIONS
+
+- Components: PascalCase (e.g. UserCard.tsx)
+- Hooks: camelCase starting with "use" (e.g. useAuth.ts)
+- Utilities: camelCase (e.g. formatDate.ts)
+- Constants: UPPER_SNAKE_CASE
+- Types / Interfaces: PascalCase
+- Boolean variables must start with is / has / can / should
+
+TYPESCRIPT
+
+- TypeScript strict mode is required.
+- Avoid using `any`. Use `unknown` and type guards when necessary.
+- Use interfaces for object shapes.
+- Use union types for finite states.
+- Props must always be typed explicitly.
+
+REACT
+
+- Components should be pure and predictable.
+- Keep components focused on a single responsibility.
+- Extract reusable logic into custom hooks.
+- Avoid deeply nested JSX and conditional rendering.
+
+NEXT.JS
+
+- Prefer Server Components by default.
+- Use Client Components only when required (state, effects, browser APIs).
+- Avoid unnecessary client-side JavaScript.
+- Use dynamic imports for heavy or optional features.
+
+STYLING
+
+- Use Tailwind CSS utility-first approach.
+- Avoid inline styles unless absolutely necessary.
+- Group Tailwind classes logically (layout → spacing → visuals → states).
+- Use helper utilities (e.g. cn()) to merge classNames.
+
+ERROR HANDLING
+
+- Always handle async errors.
+- Provide loading, empty, and error states.
+- Do not allow silent failures.
+
+PERFORMANCE
+
+- Optimize for Core Web Vitals.
+- Avoid unnecessary re-renders.
+- Lazy-load non-critical components.
+- Optimize images and fonts.
+
+ACCESSIBILITY
+
+- Use semantic HTML elements.
+- Ensure keyboard accessibility.
+- Provide alt text for images.
+- Ensure sufficient color contrast.
+
+CODE QUALITY
+
+- Functions should be small and focused.
+- Avoid deeply nested conditions.
+- Use early returns.
+- Comments should explain WHY, not WHAT.
+
+OUTPUT EXPECTATION
+
+- Always generate production-ready code.
+- Clearly specify file paths.
+- Code must compile without TypeScript errors.

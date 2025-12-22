@@ -1,0 +1,76 @@
+---
+alwaysApply: true
+---
+
+This rule applies ONLY to the Uppingham website project.
+It overrides and extends the global coding standards.
+
+PROJECT CONTEXT
+
+- Framework: Next.js (App Router) + TypeScript
+- Styling: Tailwind CSS
+- i18n: next-intl
+- Design source: Figma
+- Website type: Multi-campus, bilingual, SEO-first marketing website
+
+LANGUAGE RULE
+
+- All code must be written in English.
+- All explanations, reasoning, and guidance must be written in Vietnamese.
+- Never mix Vietnamese inside code.
+
+FIGMA-FIRST RULE (CRITICAL)
+
+- Figma is the single source of truth.
+- Do NOT invent layout, spacing, typography, colors, or components.
+- Each Figma section must map to a reusable Section component.
+- If a design detail is unclear, implement the safest minimal version and add a TODO.
+
+I18N RULES
+
+- English is the default language.
+- Vietnamese is optional and may fallback to English.
+- All UI text must use next-intl translation keys.
+- No hardcoded user-facing text is allowed.
+- API data may be single-language initially.
+
+ARCHITECTURE RULES
+
+- Use Next.js App Router.
+- Server Components by default.
+- Use "use client" only when interaction, animation, or browser APIs are required.
+- Pages must only compose components; no complex logic in pages.
+
+DATA & API RULES
+
+- Data must be accessed via a repository pattern.
+- UI components must never fetch data directly.
+- Support mock data when API is unavailable.
+- Switching from mock to real API must not require UI changes.
+
+STYLING RULES
+
+- Tailwind CSS only.
+- Always use cn() helper to merge classNames.
+- No arbitrary spacing or colors unless explicitly defined in Figma.
+
+SEO RULES
+
+- One H1 per page.
+- Correct heading hierarchy.
+- Use semantic HTML.
+- Pages must be SEO-ready by default.
+- Multilingual pages must support language alternates.
+
+PERFORMANCE RULES
+
+- Optimize for Core Web Vitals (LCP, CLS, TBT).
+- Avoid unnecessary client-side JavaScript.
+- Dynamically import heavy components.
+- Respect prefers-reduced-motion for animations.
+
+OUTPUT EXPECTATION
+
+- Always provide complete, production-ready code.
+- Clearly specify file paths.
+- Provide a short explanation in Vietnamese describing key decisions.
