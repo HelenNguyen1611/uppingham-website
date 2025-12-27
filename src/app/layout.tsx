@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { ttNorms, tagFont } from '@/lib/fonts';
 import './globals.css';
 import { getLocale } from 'next-intl/server';
+import { SplashLoader } from '@/components/ui/SplashLoader';
+
 export const metadata: Metadata = {
   title: 'Uppingham',
   description: 'Uppingham Vietnam',
@@ -17,7 +19,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${ttNorms.variable} ${tagFont.variable} antialiased`}>
-        {children}
+        <SplashLoader durationMs={3000} showOncePerDay showAgainAfterDays={1}>
+          {children}
+        </SplashLoader>
       </body>
     </html>
   );
