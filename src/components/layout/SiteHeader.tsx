@@ -29,7 +29,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-stone py-7">
+    <header className="sticky top-0 z-50 w-full bg-stone py-11">
       <div className="container">
         <div className="flex items-center justify-between h-15">
           {/* Left Section: Hamburger Menu + Navigation Links */}
@@ -97,7 +97,7 @@ export function SiteHeader() {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="currentColor"
+                  stroke={isPortalsOpen ? 'var(--red)' : 'currentColor'}
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -105,13 +105,17 @@ export function SiteHeader() {
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
                 </svg>
-                <span>{t('portals')}</span>
+                <span
+                  className={cn(isPortalsOpen ? 'text-red' : 'text-primary')}
+                >
+                  {t('portals')}
+                </span>
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="currentColor"
+                  stroke={isPortalsOpen ? 'var(--red)' : 'currentColor'}
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -126,24 +130,29 @@ export function SiteHeader() {
 
               {/* Portals Dropdown Menu */}
               {isPortalsOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-neutral-200 py-2 z-50">
+                <div
+                  className={cn(
+                    'font-tt-norms font-[450] absolute left-[-10px] right-0 mt-2 rounded-md  z-50',
+                    locale === 'vi' ? 'w-52' : 'w-34'
+                  )}
+                >
                   <Link
                     href={`/${locale}/student-portal`}
-                    className="block px-4 py-2 text-sm text-[#00003C] hover:bg-neutral-50 transition-colors"
+                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >
                     {t('studentPortal')}
                   </Link>
                   <Link
                     href={`/${locale}/parent-portal`}
-                    className="block px-4 py-2 text-sm text-[#00003C] hover:bg-neutral-50 transition-colors"
+                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >
                     {t('parentPortal')}
                   </Link>
                   <Link
                     href={`/${locale}/staff-portal`}
-                    className="block px-4 py-2 text-sm text-[#00003C] hover:bg-neutral-50 transition-colors"
+                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >
                     {t('staffPortal')}
@@ -192,7 +201,7 @@ export function SiteHeader() {
                 <Link
                   key={link.key}
                   href={link.href}
-                  className="text-[#00003C] font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity px-2"
+                  className="text-primary font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity px-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t(link.key)}
@@ -203,7 +212,7 @@ export function SiteHeader() {
                 <button
                   type="button"
                   onClick={() => setIsPortalsOpen(!isPortalsOpen)}
-                  className="flex items-center justify-between w-full text-[#00003C] font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
+                  className="flex items-center justify-between w-full text-primary font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
                 >
                   <span>{t('portals')}</span>
                   <svg
@@ -227,7 +236,7 @@ export function SiteHeader() {
                   <div className="mt-2 pl-4 flex flex-col gap-2">
                     <Link
                       href={`/${locale}/student-portal`}
-                      className="text-sm text-[#00003C] hover:opacity-80 transition-opacity"
+                      className="font-tt-norms font-[450] text-sm text-pri hover:opacity-80 transition-opacity"
                       onClick={() => {
                         setIsPortalsOpen(false);
                         setIsMobileMenuOpen(false);
@@ -237,7 +246,7 @@ export function SiteHeader() {
                     </Link>
                     <Link
                       href={`/${locale}/parent-portal`}
-                      className="text-sm text-[#00003C] hover:opacity-80 transition-opacity"
+                      className="font-tt-norms font-[450] text-sm text-[#00003C] hover:opacity-80 transition-opacity"
                       onClick={() => {
                         setIsPortalsOpen(false);
                         setIsMobileMenuOpen(false);
@@ -247,7 +256,7 @@ export function SiteHeader() {
                     </Link>
                     <Link
                       href={`/${locale}/staff-portal`}
-                      className="text-sm text-[#00003C] hover:opacity-80 transition-opacity"
+                      className="font-tt-norms font-[450] text-sm text-[#00003C] hover:opacity-80 transition-opacity"
                       onClick={() => {
                         setIsPortalsOpen(false);
                         setIsMobileMenuOpen(false);

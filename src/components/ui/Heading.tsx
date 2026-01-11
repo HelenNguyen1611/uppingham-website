@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils/cn';
 
-type HeadingVariant = 'h1' | 'h3' | 'h4';
+type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 const variantClasses: Record<HeadingVariant, string> = {
-  h1: 'text-[72px] font-[400] uppercase leading-normal',
-  h3: 'text-[36px] font-[400] uppercase leading-[50px]',
-  h4: 'text-[24px] font-[450] uppercase leading-[34px]',
+  h1: 'text-heading-h1 font-[400] uppercase leading-normal',
+  h2: 'text-heading-h2 font-[400] uppercase leading-normal',
+  h3: 'text-heading-h3 font-[400] uppercase leading-normal',
+  h4: 'text-heading-h4 font-[400] uppercase leading-normal',
+  h5: 'text-heading-h5 font-[400] uppercase leading-normal',
+  h6: 'text-heading-h6 font-[400] uppercase leading-normal',
 };
 
 export type HeadingProps<T extends React.ElementType = 'h2'> = {

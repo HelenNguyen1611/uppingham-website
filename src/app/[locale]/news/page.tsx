@@ -19,4 +19,3 @@ export default function NewsPage() {
 
   return <BlockRenderer sections={content.sections} />;
 }
-

@@ -19,4 +19,3 @@ export default function LifePage() {
 
   return <BlockRenderer sections={content.sections} />;
 }
-

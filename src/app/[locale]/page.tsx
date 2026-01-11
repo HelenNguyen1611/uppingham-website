@@ -1,5 +1,5 @@
 import { getPageContent } from '@/lib/data/pages';
-import { BlockRenderer } from '@/components/page-blocks/BlockRenderer';
+// import { BlockRenderer } from '@/components/page-blocks/BlockRenderer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { Metadata } from 'next';
 
@@ -20,9 +20,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      {/* Add more sections directly here */}
-      {/* <TextSection /> */}
-      {/* <FeaturesSection /> */}
     </>
   );
 }

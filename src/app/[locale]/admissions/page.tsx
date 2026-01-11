@@ -19,4 +19,3 @@ export default function AdmissionsPage() {
 
   return <BlockRenderer sections={content.sections} />;
 }
-

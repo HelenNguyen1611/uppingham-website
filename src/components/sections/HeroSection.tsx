@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
 import { Text } from '@/components/ui/Text';
@@ -9,47 +9,26 @@ import { cn } from '@/lib/utils/cn';
 
 export function HeroSection() {
   const t = useTranslations('hero');
+  const locale = useLocale();
 
   return (
-    <section className="relative bg-white min-h-screen flex items-center justify-center py-20 md:py-32 overflow-hidden">
-      {/* Vertical line accents - centered */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px pointer-events-none z-0">
-        {/* Top line - from top to above heading (stops before heading) */}
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-px bg-[#FF9E94] opacity-60"
-          style={{ height: '30vh', maxHeight: '300px' }}
-        />
-        {/* Bottom line - from below button to bottom (starts after button) */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px bg-[#FF9E94] opacity-60"
-          style={{ height: '30vh', maxHeight: '300px' }}
-        />
-      </div>
-
-      <Container size="wide" className="relative z-10">
-        <div className="flex flex-col items-center gap-8 md:gap-12">
+    <section className="relative  flex items-center justify-between ">
+      <Container
+        size="wide"
+        className="relative z-10 min-h-[calc(100vh-140px)]"
+      >
+        <div className=" flex flex-col items-center gap-0">
+          {/* Line 1: from top to above heading (stops before "WHERE TOMORROW'S LEADERS ARE MADE") */}
+          <div className="w-[1px] h-[clamp(80px,8vh,138px)] bg-red mx-auto relative pb-[clamp(50px,5vh, 75px)]" />
           {/* Main Heading */}
-          <div className="text-center space-y-2 md:space-y-4 px-4">
+          <div className="text-center relative flex flex-col items-center gap-6 mt-7">
             <Heading
               as="h1"
-              variant="h1"
+              variant={locale === 'vi' ? 'h2' : 'h1'}
               align="center"
-              className="text-[#00003C]"
             >
-              {t('headingLine1')}
+              <span dangerouslySetInnerHTML={{ __html: t('heading') }} />
             </Heading>
-            <Heading
-              as="h1"
-              variant="h1"
-              align="center"
-              className="text-[#00003C]"
-            >
-              {t('headingLine2')}
-            </Heading>
-          </div>
-
-          {/* CTA Button */}
-          <div className="relative z-10">
             <Button
               href="/admissions"
               variant="primary"
@@ -60,16 +39,16 @@ export function HeroSection() {
             </Button>
           </div>
 
+          {/* Line 2: from below button to bottom (between button and tagline text) */}
+          <div className="w-[1px] h-[clamp(80px,8vh,138px)] bg-red mx-auto relative mt-12" />
           {/* Descriptive Text Section */}
-          <div className="mt-16 md:mt-24 w-full max-w-4xl space-y-4 px-4 text-left">
+          <div className="w-full max-w-4xl px-4 gap-4 flex flex-col">
             {/* Tagline */}
             <Text
               as="p"
               variant="body"
-              align="left"
-              className={cn(
-                'text-[#E13246] text-lg md:text-xl font-tt-norms font-[450]'
-              )}
+              align="center"
+              className={cn('text-secondary text-xl font-tt-norms font-[450]')}
             >
               {t('tagline')}
             </Text>
@@ -78,9 +57,9 @@ export function HeroSection() {
             <Text
               as="p"
               variant="body"
-              align="left"
+              align="center"
               className={cn(
-                'text-[#00003C] text-base md:text-lg font-tt-norms font-[400] leading-relaxed'
+                'text-primary text-xl font-tt-norms font-[400] leading-relaxed'
               )}
             >
               {t('description')}
