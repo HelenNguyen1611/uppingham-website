@@ -15,8 +15,8 @@
     --background: var(--stone);
 
     /* Heading font sizes */
-    --heading-h1: clamp(54px,5vw,72px);
-    --heading-h2: clamp(40px,4vw,60px);
+    --heading-h1: clamp(54px,3vw,72px);
+    --heading-h2: clamp(40px,3vw,60px);
     --heading-h3: clamp(32px,3vw,48px);
     --heading-h4: clamp(24px,2vw,36px);
     --heading-h5: clamp(16px,1vw,24px);

@@ -2,8 +2,8 @@ import * as React from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils/cn';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline';
+export type ButtonSize = 'sm' | 'lg';
 
 export type ButtonProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -19,31 +19,28 @@ export type ButtonProps = Omit<
 };
 
 const base =
-  'relative inline-flex items-center justify-center gap-2 font-medium transition min-w-[300px] h-[70px]' +
+  'relative inline-flex items-center justify-center gap-[10px] font-tt-norms font-semibold transition-colors box-border' +
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ' +
   'disabled:pointer-events-none disabled:opacity-50';
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-secondary text-white border border-secondary hover:bg-transparent hover:text-primary hover:border-primary focus-visible:ring-neutral-900',
+    'bg-secondary text-white border border-[2px] border-secondary hover:bg-transparent hover:text-primary hover:border-primary focus-visible:ring-neutral-900',
   secondary:
-    'bg-neutral-100 text-neutral-900 hover:bg-neutral-200 focus-visible:ring-neutral-400',
+    'bg-secondary text-white border border-[2px] border-secondary hover:bg-transparent hover:text-white hover:border-white focus-visible:ring-neutral-900',
   outline:
-    'border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50 focus-visible:ring-neutral-400',
-  ghost:
-    'bg-transparent text-neutral-900 hover:bg-neutral-100 focus-visible:ring-neutral-400',
+    'border border-[2px] bg-transparent border-white text-white hover:bg-white hover:text-primary focus-visible:ring-neutral-400',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'h-[50px] px-3 text-sm',
-  md: 'h-[70px] px-4 text-sm',
-  lg: 'h-[70px] px-6 text-base',
+  sm: 'h-[50px] py-[10px] px-[24px] text-base leading-[30px]',
+  lg: 'h-[70px] py-[10px] px-[24px] text-xl leading-[30px]',
 };
 
 export function Button({
   href,
   variant = 'primary',
-  size = 'md',
+  size = 'lg',
   isLoading = false,
   leftIcon,
   rightIcon,
