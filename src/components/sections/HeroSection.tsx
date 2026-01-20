@@ -32,7 +32,7 @@ export function HeroSection() {
               href="/admissions"
               variant="primary"
               size="lg"
-              className="min-w-[300px]"
+              className="min-w-[300px] mt-5"
             >
               {t('ctaButton')}
             </Button>

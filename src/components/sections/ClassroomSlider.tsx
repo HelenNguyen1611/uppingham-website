@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { useTranslations } from 'next-intl';
 import { Heading } from '@/components/ui/Heading';
 import { Image } from '@/components/ui/Image';
@@ -17,7 +18,9 @@ type Slide = {
 
 export function ClassroomSlider() {
   const t = useTranslations('classroomSlider');
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   // TODO: Replace placeholder slides with final Figma copy when available.
   const slides: Slide[] = [
@@ -38,43 +41,37 @@ export function ClassroomSlider() {
   ];
 
   const hasMultipleSlides = slides.length > 1;
-  const activeSlide = slides[activeIndex];
 
-  const handlePrevious = () => {
-    if (!hasMultipleSlides) {
+  const handlePrevious = React.useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const handleNext = React.useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
+  const handleSelect = React.useCallback(() => {
+    if (!emblaApi) {
       return;
     }
-    setActiveIndex((current) => (current - 1 + slides.length) % slides.length);
-  };
-
-  const handleNext = () => {
-    if (!hasMultipleSlides) {
-      return;
-    }
-    setActiveIndex((current) => (current + 1) % slides.length);
-  };
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   React.useEffect(() => {
-    if (!hasMultipleSlides) {
+    if (!emblaApi) {
       return;
     }
 
-    const prefersReducedMotion = window.matchMedia?.(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const intervalId = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % slides.length);
-    }, 7000);
+    setScrollSnaps(emblaApi.scrollSnapList());
+    handleSelect();
+    emblaApi.on('select', handleSelect);
+    emblaApi.on('reInit', handleSelect);
 
     return () => {
-      window.clearInterval(intervalId);
+      emblaApi.off('select', handleSelect);
+      emblaApi.off('reInit', handleSelect);
     };
-  }, [hasMultipleSlides, slides.length]);
+  }, [emblaApi, handleSelect]);
 
   return (
     <section
@@ -101,7 +98,7 @@ export function ClassroomSlider() {
           </Heading>
         </div>
 
-        <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="relative">
           <button
             type="button"
             onClick={handlePrevious}
@@ -125,43 +122,67 @@ export function ClassroomSlider() {
             </svg>
           </button>
 
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
-            <Image
-              src={activeSlide.image}
-              alt={activeSlide.imageAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {slides.map((slide) => (
+                <div
+                  key={slide.id}
+                  className="min-w-0 flex-[0_0_100%] px-0"
+                >
+                  <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
+                      <Image
+                        src={slide.image}
+                        alt={slide.imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        priority
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-4 text-center lg:text-left">
+                      <Heading
+                        as="h3"
+                        variant="h4"
+                        align="left"
+                        className="text-secondary"
+                      >
+                        {slide.title}
+                      </Heading>
+                      <Text
+                        as="p"
+                        variant="body"
+                        align="left"
+                        className="text-primary"
+                      >
+                        {slide.description}
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col gap-4 text-center lg:text-left">
-            <Heading as="h3" variant="h4" align="left" className="text-secondary">
-              {activeSlide.title}
-            </Heading>
-            <Text as="p" variant="body" align="left" className="text-primary">
-              {activeSlide.description}
-            </Text>
-            {hasMultipleSlides ? (
-              <div className="mt-4 flex items-center justify-center gap-3 lg:justify-start">
-                {slides.map((slide, index) => (
-                  <button
-                    key={slide.id}
-                    type="button"
-                    onClick={() => setActiveIndex(index)}
-                    aria-label={t('slideButton', { index: index + 1 })}
-                    className={cn(
-                      'h-2.5 w-2.5 rounded-full border border-primary transition',
-                      index === activeIndex
-                        ? 'bg-primary'
-                        : 'bg-transparent hover:border-primary/70'
-                    )}
-                  />
-                ))}
-              </div>
-            ) : null}
-          </div>
+          {hasMultipleSlides ? (
+            <div className="mt-8 flex items-center justify-center gap-3 lg:justify-start">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={`dot-${index}`}
+                  type="button"
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  aria-label={t('slideButton', { index: index + 1 })}
+                  className={cn(
+                    'h-2.5 w-2.5 rounded-full border border-primary transition',
+                    index === selectedIndex
+                      ? 'bg-primary'
+                      : 'bg-transparent hover:border-primary/70'
+                  )}
+                />
+              ))}
+            </div>
+          ) : null}
 
           <button
             type="button"

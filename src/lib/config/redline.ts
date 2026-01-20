@@ -19,7 +19,7 @@ export const redlineRoutes = [
 export function shouldShowRedLine(pathname: string): boolean {
   // Remove locale prefix (e.g., '/en' or '/vi')
   const pathWithoutLocale = pathname.replace(/^\/(en|vi)/, '') || '/';
-  
+
   return redlineRoutes.some((route) => {
     // Exact match for home page
     if (route === '/' && pathWithoutLocale === '/') {

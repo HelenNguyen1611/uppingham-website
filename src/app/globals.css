@@ -15,12 +15,12 @@
   --background: var(--stone);
 
   /* Heading font sizes */
-  --heading-h1: clamp(54px,3vw,72px);
-  --heading-h2: clamp(40px,3vw,50px);
-  --heading-h3: clamp(24px,3vw,32px);
-  --heading-h4: clamp(20px,2vw,28px);
-  --heading-h5: clamp(16px,1vw,24px);
-  --heading-h6: clamp(12px,1vw,20px);
+  --heading-h1: clamp(54px, 3vw, 72px);
+  --heading-h2: clamp(40px, 3vw, 50px);
+  --heading-h3: clamp(24px, 3vw, 32px);
+  --heading-h4: clamp(20px, 2vw, 28px);
+  --heading-h5: clamp(18px, 1vw, 20px);
+  --heading-h6: clamp(12px, 1vw, 20px);
 
   /* Optional line-heights */
   --line-height-h1: 1.1;
@@ -68,6 +68,7 @@
 html {
   box-sizing: border-box;
 }
+
 html * {
   box-sizing: border-box;
 }
@@ -84,9 +85,20 @@ body {
     opacity: 0;
     transform: translateY(3px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes redLineReveal {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
   }
 }
 
@@ -95,30 +107,45 @@ body {
 }
 
 
-  /* Custom heading font-size utilities */
-  @layer utilities {
-    .text-heading-h1 {
-      font-size: var(--heading-h1) !important;
-      line-height: var(--line-height-h1) !important;
-    }
-    .text-heading-h2 {
-      font-size: var(--heading-h2) !important;
-      line-height: var(--line-height-h2) !important;
-    }
-    .text-heading-h3 {
-      font-size: var(--heading-h3) !important;
-      line-height: var(--line-height-h3) !important;
-    }
-    .text-heading-h4 {
-      font-size: var(--heading-h4) !important;
-      line-height: var(--line-height-h4) !important;
-    }
-    .text-heading-h5 {
-      font-size: var(--heading-h5) !important;
-      line-height: var(--line-height-h5) !important;
-    }
-    .text-heading-h6 {
-      font-size: var(--heading-h6) !important;
-      line-height: var(--line-height-h6) !important;
-    }
+/* Custom heading font-size utilities */
+@layer utilities {
+  .text-heading-h1 {
+    font-size: var(--heading-h1) !important;
+    line-height: var(--line-height-h1) !important;
   }
+
+  .text-heading-h2 {
+    font-size: var(--heading-h2) !important;
+    line-height: var(--line-height-h2) !important;
+  }
+
+  .text-heading-h3 {
+    font-size: var(--heading-h3) !important;
+    line-height: var(--line-height-h3) !important;
+  }
+
+  .text-heading-h4 {
+    font-size: var(--heading-h4) !important;
+    line-height: var(--line-height-h4) !important;
+  }
+
+  .text-heading-h5 {
+    font-size: var(--heading-h5) !important;
+    line-height: var(--line-height-h5) !important;
+  }
+
+  .text-heading-h6 {
+    font-size: var(--heading-h6) !important;
+    line-height: var(--line-height-h6) !important;
+  }
+
+  .animate-redline {
+    transform-origin: top;
+    animation: redLineReveal 400ms ease-out 0ms both;
+  }
+
+  .animate-redline-delay {
+    transform-origin: top;
+    animation: redLineReveal 400ms ease-out 400ms both;
+  }
+}
