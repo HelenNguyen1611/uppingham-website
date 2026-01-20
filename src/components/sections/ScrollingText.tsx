@@ -60,7 +60,7 @@ export function ScrollingText({
           className="object-cover"
           sizes="100vw"
         />
-      <div className="absolute inset-0 bg-black/35" />
+      {/* <div className="absolute inset-0 bg-black/35" /> */}
       <div className="container h-full">
         <div className="relative flex items-center justify-center h-full w-full max-w-[72%] lg:max-w-[60%] mx-auto">
             <div className={cn('w-full text-center', hasEntered && 'animate-scroll-diagonal')}>
