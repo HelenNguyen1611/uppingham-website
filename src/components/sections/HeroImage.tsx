@@ -41,48 +41,49 @@ export function HeroImage({
   return (
     <section className={cn(' relative z-20 overflow-hidden', className)}>
       <div className="container relative">
-        {/* Background image */}
-        <div className="absolute inset-0 ">
-          <Image
-            src={resolvedImageSrc}
-            alt={resolvedImageAlt}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" /> */}
-        </div>
-        {/* Content */}
-        <div className="relative z-10 flex min-h-[calc(100vh-148px)] max-h-[450px] flex-col items-center justify-center gap-0 text-center">
-          {/* Line 1: from top to above heading (stops before "WHERE TOMORROW'S LEADERS ARE MADE") */}
-          <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)]  bg-red mx-auto relative z-10 animate-redline" /> 
-          <div className="wrap-conttent-hero relative py-[50px]">
-            <Heading
-              as="h3"
-              variant="h5"
-              className="text-white mb-5 font-tag normal-case "
-            >
-              {resolvedEyebrow}
-            </Heading>
-            <Heading
-              as={headingAs}
-              variant={headingVariant}
-              align="center"
-              className="text-white mb-[50px]"
-            >
-              {resolvedHeading}
-            </Heading>
-            {showCta ? (
-              <Button href={resolvedCtaHref} variant="primary" size="lg" className="min-w-[300px] hover:border-white hover:bg-transparent hover:text-white"> 
-                {resolvedCtaLabel}
-              </Button>
-            ) : null}
+        <div className="relative w-full">
+          {/* Background image */}
+          <div className="absolute inset-0 ">
+            <Image
+              src={resolvedImageSrc}
+              alt={resolvedImageAlt}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" /> */}
           </div>
-          {/* Line 2: from heading to bottom (between button and tagline text) */}
-          <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)] bg-red mx-auto relative z-10 animate-redline-delay" /> 
-          
+          {/* Content */}
+          <div className="relative z-10 flex min-h-[calc(100vh-148px)] max-h-[450px] flex-col items-center justify-center gap-0 text-center">
+            {/* Line 1: from top to above heading (stops before "WHERE TOMORROW'S LEADERS ARE MADE") */}
+            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)]  bg-red mx-auto relative z-10 animate-redline" /> 
+            <div className="wrap-conttent-hero relative py-[50px]">
+              <Heading
+                as="h3"
+                variant="h5"
+                className="text-white mb-5 font-tag normal-case"
+              >
+                {resolvedEyebrow}
+              </Heading>
+              <Heading
+                as={headingAs}
+                variant={headingVariant}
+                align="center"
+                className="text-white mb-[50px]"
+              >
+                {resolvedHeading}
+              </Heading>
+              {showCta ? (
+                <Button href={resolvedCtaHref} variant="primary" size="lg" className="min-w-[300px] hover:border-white hover:bg-transparent hover:text-white"> 
+                  {resolvedCtaLabel}
+                </Button>
+              ) : null}
+            </div>
+            {/* Line 2: from heading to bottom (between button and tagline text) */}
+            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)] bg-red mx-auto relative z-10 animate-redline-delay" /> 
+          </div>
         </div>
       </div>
         

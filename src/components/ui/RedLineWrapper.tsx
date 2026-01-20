@@ -1,19 +1,22 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { RedLine } from './RedLine';
-import { shouldShowRedLine } from '@/lib/config/redline';
 
 /**
  * Wrapper component that conditionally renders RedLine based on route configuration
  */
-export function RedLineWrapper() {
-  const pathname = usePathname();
-  const showRedLine = shouldShowRedLine(pathname);
+type RedLineWrapperProps = {
+  show?: boolean;
+  autoFillFirstFold?: boolean;
+};
 
-  if (!showRedLine) {
+export function RedLineWrapper({
+  show = true,
+  autoFillFirstFold = false,
+}: RedLineWrapperProps) {
+  if (!show) {
     return null;
   }
 
-  return <RedLine />;
+  return <RedLine autoFillFirstFold={autoFillFirstFold} />;
 }

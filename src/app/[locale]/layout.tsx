@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
-import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -27,10 +26,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale as Locale} messages={messages}>
       <div className="flex flex-col min-h-screen relative">
         <SiteHeader />
-        <main className="flex-1 relative">
-          <RedLineWrapper />
-          {children}
-        </main>
+        <main className="flex-1 relative">{children}</main>
         <SiteFooter />
       </div>
     </NextIntlClientProvider>

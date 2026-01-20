@@ -5,9 +5,13 @@ import { cn } from '@/lib/utils/cn';
 
 type RedLineProps = {
   className?: string;
+  autoFillFirstFold?: boolean;
 };
 
-export function RedLine({ className }: RedLineProps) {
+export function RedLine({
+  className,
+  autoFillFirstFold = true,
+}: RedLineProps) {
   const [lineHeight, setLineHeight] = React.useState(0);
 
   const rafIntroRef = React.useRef<number | null>(null);
@@ -35,10 +39,12 @@ export function RedLine({ className }: RedLineProps) {
       return totalScrollableHeight > 0 ? clamp01(scrollTop / totalScrollableHeight) : 0;
     };
 
-    // baseline first fold + scroll progress
-    const computeCombinedHeightPercent = () => {
-      const firstFold = getFirstFoldProgress(); // 0..1
+    const computeHeightPercent = () => {
       const scrollP = getScrollProgress(); // 0..1
+      if (!autoFillFirstFold) {
+        return scrollP * 100;
+      }
+      const firstFold = getFirstFoldProgress(); // 0..1
       const combined = clamp01(firstFold + (1 - firstFold) * scrollP);
       return combined * 100;
     };
@@ -87,12 +93,15 @@ export function RedLine({ className }: RedLineProps) {
     };
 
     const syncToScrollSmooth = () => {
-      targetHeightRef.current = computeCombinedHeightPercent();
+      targetHeightRef.current = computeHeightPercent();
       startFollow();
     };
 
     // ---- Intro: animate 0 -> first fold ----
     const runIntro = () => {
+      if (!autoFillFirstFold) {
+        return;
+      }
       const targetHeightPercent = getFirstFoldProgress() * 100;
 
       // đảm bảo intro thấy rõ
@@ -109,7 +118,7 @@ export function RedLine({ className }: RedLineProps) {
         if (scrollTop > 0) {
           cancelIntro();
           // vào chế độ follow ngay
-          setImmediate(computeCombinedHeightPercent());
+          setImmediate(computeHeightPercent());
           return;
         }
 
@@ -137,7 +146,7 @@ export function RedLine({ className }: RedLineProps) {
     // ---- Events ----
     let ticking = false;
     const handleScroll = () => {
-      if (!isIntroDoneRef.current) cancelIntro();
+      if (autoFillFirstFold && !isIntroDoneRef.current) cancelIntro();
 
       if (!ticking) {
         ticking = true;
@@ -150,7 +159,7 @@ export function RedLine({ className }: RedLineProps) {
 
     const handleResize = () => {
       // resize làm firstFold thay đổi => update target và follow mượt
-      if (!isIntroDoneRef.current) {
+      if (autoFillFirstFold && !isIntroDoneRef.current) {
         if (rafIntroRef.current !== null) cancelAnimationFrame(rafIntroRef.current);
         runIntro();
         return;
@@ -160,9 +169,12 @@ export function RedLine({ className }: RedLineProps) {
 
     // Init
     const initialScrollTop = window.scrollY || document.documentElement.scrollTop;
-    if (initialScrollTop > 0) {
+    if (!autoFillFirstFold) {
       isIntroDoneRef.current = true;
-      setImmediate(computeCombinedHeightPercent());
+      setImmediate(computeHeightPercent());
+    } else if (initialScrollTop > 0) {
+      isIntroDoneRef.current = true;
+      setImmediate(computeHeightPercent());
     } else {
       runIntro();
     }
@@ -177,7 +189,7 @@ export function RedLine({ className }: RedLineProps) {
       if (rafIntroRef.current !== null) cancelAnimationFrame(rafIntroRef.current);
       if (rafFollowRef.current !== null) cancelAnimationFrame(rafFollowRef.current);
     };
-  }, []);
+  }, [autoFillFirstFold]);
 
   return (
     <div

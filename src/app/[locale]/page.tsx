@@ -7,6 +7,7 @@ import { VideoSection } from '@/components/sections/VideoSection';
 import { Campus } from '@/components/sections/Campus';
 import { Admissions } from '@/components/sections/Admissions';
 import { ClassroomSlider } from '@/components/sections/ClassroomSlider';
+import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
 
 import { Metadata } from 'next';
 
@@ -26,7 +27,8 @@ export default function HomePage() {
   // Option 2: Call sections directly (component-driven)
   return (
     <>
-      <HeroImage/>
+      <RedLineWrapper autoFillFirstFold={true} />
+      {/* <HeroImage /> */}
       <HeroSection />
       <VideoSection />
       <Headmaster />
