@@ -99,29 +99,71 @@
     "backgroundImage": "/home/scrolling-text-bg.jpg",
     "backgroundAlt": "Học sinh Uppingham ngoài trời"
   },
-  "learning": {
-    "sectionLabel": "Giáo dục",
-    "eyebrow": "Giáo dục",
-    "heading": "MỤC ĐÍCH & ƯU TIÊN",
+  "education": {
+    "sectionLabel": "Học tập",
+    "eyebrow": "Học tập",
+    "heading": "CUỘC SỐNG TẠI UPPINGHAM",
     "previousButton": "Slide trước",
     "nextButton": "Slide tiếp theo",
     "slideButton": "Chuyển đến slide {index}",
     "slides": {
       "holistic": {
-        "title": "PHÁT TRIỂN TOÀN DIỆN",
-        "image": "/home/early-year.jpg"
+        "title": "CHO NHỮNG <br/> AI DÁM ƯỚC MƠ",
+        "description": "Được hỗ trợ về học thuật, cảm xúc và kỹ năng xã hội.",
+        "ctaLabel": "Tìm hiểu thêm",
+        "ctaHref": "/learning",
+        "image": "/home/book-open.jpg",
+        "imageAlt": "Học sinh chơi đàn piano"
       },
       "enrichment": {
-        "title": "XUẤT SẮC TRONG HOẠT ĐỘNG BỒI DƯỠNG",
-        "image": "/home/primary.jpg"
+        "title": "CHO NHỮNG <br/> AI SÁNG TẠO",
+        "description": "Sáng tạo và biểu đạt được lồng ghép trong học tập hằng ngày.",
+        "ctaLabel": "Tìm hiểu thêm",
+        "ctaHref": "/learning",
+        "image": "/home/book-open-2.jpg",
+        "imageAlt": "Học sinh hoạt động sáng tạo"
       },
       "global": {
-        "title": "NHẬN THỨC TOÀN CẦU",
-        "image": "/home/secondary.jpg"
+        "title": "CHO NHỮNG <br/> AI KHÁM PHÁ",
+        "description": "Nuôi dưỡng nhận thức toàn cầu và sự tò mò với thế giới.",
+        "ctaLabel": "Tìm hiểu thêm",
+        "ctaHref": "/learning",
+        "image": "/home/book-open-3.jpg",
+        "imageAlt": "Học sinh khám phá công nghệ"
       },
       "character": {
-        "title": "BỒI ĐẮP NHÂN CÁCH",
-        "image": "/home/classroom.jpg"
+        "title": "CHO NHỮNG <br/> AI DẪN DẮT",
+        "description": "Bồi đắp nhân cách qua những trải nghiệm có mục đích.",
+        "ctaLabel": "Tìm hiểu thêm",
+        "ctaHref": "/learning",
+        "image": "/home/book-open-4.jpg",
+        "imageAlt": "Học sinh tham gia hoạt động lãnh đạo"
+      }
+    }
+  },
+  "learning": {
+    "sectionLabel": "Học tập",
+    "eyebrow": "Học tập",
+    "heading": "CUỘC SỐNG TẠI UPPINGHAM",
+    "previousButton": "Slide trước",
+    "nextButton": "Slide tiếp theo",
+    "slideButton": "Chuyển đến slide {index}",
+    "slides": {
+      "holistic": {
+        "title": "FOR THOSE <br/> WHO DREAM BIG",
+        "description": "Supported academically, emotionally and socially.",
+        "ctaLabel": "Learn more",
+        "ctaHref": "/learning",
+        "image": "/home/learning-1.jpg",
+        "imageAlt": "Student playing piano"
+      },
+      "enrichment": {
+        "title": "FOR THOSE <br/> WHO CREATE",
+        "description": "Creativity and expression woven into daily learning.",
+        "ctaLabel": "Learn more",
+        "ctaHref": "/learning",
+        "image": "/home/learning-2.jpg",
+        "imageAlt": "Student doing creative activity"
       }
     }
   }

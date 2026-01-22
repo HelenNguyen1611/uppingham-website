@@ -99,7 +99,7 @@
     "backgroundImage": "/home/scrolling-text-bg.jpg",
     "backgroundAlt": "Uppingham students outdoors"
   },
-  "learning": {
+  "education": {
     "sectionLabel": "Education",
     "eyebrow": "Education",
     "heading": "PURPOSE & PRIORITIES",
@@ -113,16 +113,42 @@
         "image": "/home/book-open.jpg"
       },
       "enrichment": {
-        "title": "EXCELLENCE IN ENRICHMENT ACTIVITIES",
+        "title": "EXCELLENCE IN <br/>ENRICHMENT ACTIVITIES",
         "image": "/home/book-open-2.jpg"
       },
       "global": {
-        "title": "GLOBAL AWARENESS",
+        "title": "GLOBAL <br/>AWARENESS",
         "image": "/home/book-open-3.jpg"
       },
       "character": {
-        "title": "CHARACTER BUILDING",
+        "title": "CHARACTER <br/> BUILDING",
         "image": "/home/book-open-4.jpg"
+      }
+    }
+  },
+  "learning": {
+    "sectionLabel": "Learning",
+    "eyebrow": "Learning",
+    "heading": "LIFE AT UPPINGHAM",
+    "previousButton": "Previous slide",
+    "nextButton": "Next slide",
+    "slideButton": "Go to slide {index}",
+    "slides": {
+      "holistic": {
+        "title": "FOR THOSE <br/> WHO DREAM BIG",
+        "description": "Supported academically, emotionally and socially.",
+        "ctaLabel": "Learn more",
+        "ctaHref": "/learning",
+        "image": "/home/learning-1.jpg",
+        "imageAlt": "Student playing piano"
+      },
+      "enrichment": {
+        "title": "FOR THOSE <br/> WHO CREATE",
+        "description": "Creativity and expression woven into daily learning.",
+        "ctaLabel": "Learn more",
+        "ctaHref": "/learning",
+        "image": "/home/learning-2.jpg",
+        "imageAlt": "Student doing creative activity"
       }
     }
   }

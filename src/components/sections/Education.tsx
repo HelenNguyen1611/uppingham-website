@@ -6,18 +6,16 @@ import { useTranslations } from 'next-intl';
 import { Heading } from '@/components/ui/Heading';
 import { Image } from '@/components/ui/Image';
 import { Text } from '@/components/ui/Text';
-import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils/cn';
 
 type Slide = {
   id: string;
   title: string;
-  description: string;
   image: string;
 };
 
-export function Learning() {
-  const t = useTranslations('learning');
+export function Education() {
+  const t = useTranslations('education');
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -27,18 +25,47 @@ export function Learning() {
     loop: false,
   });
 
+  // TODO: Replace placeholder slides with final Figma copy when available.
   const slides: Slide[] = [
     {
-      id: 'for-those-who-dream-big',
+      id: 'holistic-development',
       title: t('slides.holistic.title'),
-      description: t('slides.holistic.description'),
       image: t('slides.holistic.image'),
     },
     {
-      id: 'for-those-who-create',
+      id: 'enrichment',
       title: t('slides.enrichment.title'),
-      description: t('slides.enrichment.description'),
       image: t('slides.enrichment.image'),
+    },
+    {
+      id: 'global-awareness',
+      title: t('slides.global.title'),
+      image: t('slides.global.image'),
+    },
+    {
+      id: 'character',
+      title: t('slides.character.title'),
+      image: t('slides.character.image'),
+    },
+    {
+      id: 'holistic-development2',
+      title: t('slides.holistic.title'),
+      image: t('slides.holistic.image'),
+    },
+    {
+      id: 'enrichment2',
+      title: t('slides.enrichment.title'),
+      image: t('slides.enrichment.image'),
+    },
+    {
+      id: 'global-awareness2',
+      title: t('slides.global.title'),
+      image: t('slides.global.image'),
+    },
+    {
+      id: 'character2',
+      title: t('slides.character.title'),
+      image: t('slides.character.image'),
     },
   ];
 
@@ -78,17 +105,14 @@ export function Learning() {
   }, [emblaApi, handleSelect]);
 
   return (
-    <section
-      className="relative mt-25 pb-25 z-20"
-      aria-label={t('sectionLabel')}
-    >
+    <section className="relative mt-25 z-20" aria-label={t('sectionLabel')}>
       <div className="container">
         <div className="flex items-end justify-between gap-4">
           <div className="flex flex-col gap-8 lg:max-w-[50%]">
             <Text align="left" as="span" variant="smallHeading">
               {t('eyebrow')}
             </Text>
-            <Heading as="h2" variant="h2" align="left">
+            <Heading as="h2" variant="h2" align="left" className="leading-[1]">
               {t('heading')}
             </Heading>
           </div>
@@ -100,7 +124,7 @@ export function Learning() {
                 disabled={!hasMultipleSlides || !canScrollPrev}
                 aria-label={t('previousButton')}
                 className={cn(
-                  'hidden p-3 text-primary transition flex cursor-pointer disabled:cursor-not-allowed disabled:opacity-40',
+                  'hidden p-3 text-primary transition flex cursor-pointer disabled:cursor-not-allowed',
                 )}
               >
                 <span className="sr-only">{t('previousButton')}</span>
@@ -134,7 +158,7 @@ export function Learning() {
                 disabled={!hasMultipleSlides || !canScrollNext}
                 aria-label={t('nextButton')}
                 className={cn(
-                  'hidden p-3 text-primary transition hover:border-primary lg:flex cursor-pointer disabled:cursor-not-allowed disabled:opacity-40',
+                  'hidden p-3 text-primary transition hover:border-primary lg:flex cursor-pointer disabled:cursor-not-allowed ',
                 )}
               >
                 <span className="sr-only">{t('nextButton')}</span>
@@ -168,47 +192,38 @@ export function Learning() {
 
       <div className="mt-0">
         <div className="container">
-          <div className="relative -mr-[calc((100vw-100%)/2)] pt-[75px]">
+          <div className="relative -mr-[calc((100vw-100%)/2)] bg-stone py-25 ">
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex ">
+              <div className="flex gap-[30px] mr-6">
                 {slides.map((slide) => (
                   <div
                     key={slide.id}
-                    className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_87.5%] lg:flex-[0_0_94%] pr-[60px]"
+                    className="flex flex-col justify-between gap-8 min-w-0 flex-[0_0_56%] sm:flex-[0_0_35%] lg:flex-[0_0_22.3%] xxl:flex-[0_0_22.8%] pr-[30px] border-r border-dark-stone"
                   >
-                    <div className="relative aspect-[168/70] w-full overflow-hidden bg-white">
-                      <Image
-                        hoverZoom
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 90vw, 70vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent" />
-                      <div className="absolute inset-0 flex items-end p-[75px]">
-                        <div className="text-white flex flex-col gap-6">
-                          <Heading
-                            as="h2"
-                            variant="h2"
-                            align="left"
-                            className="text-white"
-                          >
-                            <span
-                              dangerouslySetInnerHTML={{ __html: slide.title }}
-                            />
-                          </Heading>
-                          <Text
-                            as="p"
-                            variant="body"
-                            align="left"
-                            className="mt-4 text-white"
-                          >
-                            {slide.description}
-                          </Text>
-                        </div>
+                    <div className="flex flex-col gap-8">
+                      <div className="w-full h-[1px] bg-dark-stone h-[1px]"></div>
+                      <div className="relative aspect-[375/400] w-full overflow-hidden bg-white">
+                        <Image
+                          hoverZoom
+                          src={slide.image}
+                          alt={slide.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 80vw, 32vw"
+                        />
                       </div>
+                      <Heading
+                        as="h4"
+                        variant="h4"
+                        align="left"
+                        className="text-secondary uppercase "
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: slide.title }}
+                        />
+                      </Heading>
                     </div>
+                    <div className="w-full h-[1px] bg-dark-stone h-[1px]"></div>
                   </div>
                 ))}
               </div>

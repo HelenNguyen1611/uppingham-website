@@ -1,15 +1,18 @@
 import { getPageContent } from '@/lib/data/pages';
 // import { BlockRenderer } from '@/components/page-blocks/BlockRenderer';
-import { HeroImage } from '@/components/sections/HeroImage';
-import { HeroSection } from '@/components/sections/HeroSection';
-import { Headmaster } from '@/components/sections/Headmaster';
-import { VideoSection } from '@/components/sections/VideoSection';
-import { Campus } from '@/components/sections/Campus';
-import { Admissions } from '@/components/sections/Admissions';
-import { ClassroomSlider } from '@/components/sections/ClassroomSlider';
+import {
+  Admissions,
+  Campus,
+  ClassroomSlider,
+  Education,
+  Headmaster,
+  HeroImage,
+  HeroSection,
+  Learning,
+  ScrollingText,
+  VideoSection,
+} from '@/components/sections';
 import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
-import { ScrollingText } from '@/components/sections/ScrollingText';
-import { Learning } from '@/components/sections/Learning';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,6 +41,7 @@ export default function HomePage() {
       <Campus />
       <Admissions />
       <ScrollingText />
+      <Education />
       <Learning />
     </>
   );
