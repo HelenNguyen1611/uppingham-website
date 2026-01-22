@@ -9,7 +9,7 @@ import { Admissions } from '@/components/sections/Admissions';
 import { ClassroomSlider } from '@/components/sections/ClassroomSlider';
 import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
 import { ScrollingText } from '@/components/sections/ScrollingText';
-
+import { Learning } from '@/components/sections/Learning';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +30,7 @@ export default function HomePage() {
     <>
       <RedLineWrapper autoFillFirstFold={true} />
       {/* <HeroImage /> */}
-      
+
       <HeroSection />
       <VideoSection />
       <Headmaster />
@@ -38,7 +38,7 @@ export default function HomePage() {
       <Campus />
       <Admissions />
       <ScrollingText />
-     
+      <Learning />
     </>
   );
 }

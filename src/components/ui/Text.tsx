@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils/cn';
 
-type TextVariant = 'body' | 'bodyBold' | 'menuFooter';
+type TextVariant = 'smallHeading' | 'body' | 'bodyBold' | 'menuFooter';
 
 const variantClasses: Record<TextVariant, string> = {
+  smallHeading: 'text-[20px] font-[400] font-tag text-secondary',
   body: 'text-[20px] leading-[30px] font-[450]',
   bodyBold: 'text-[20px] leading-[30px] font-[600]',
   menuFooter: 'text-[16px] leading-normal font-[450]',
@@ -32,7 +33,7 @@ export function Text<T extends React.ElementType = 'p'>({
         'font-tt-norms text-primary-dark-blue',
         variantClasses[variant],
         align === 'center' ? 'text-center' : 'text-left',
-        className
+        className,
       )}
     >
       {children}

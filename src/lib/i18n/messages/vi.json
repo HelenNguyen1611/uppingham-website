@@ -98,5 +98,31 @@
     "text": "MỤC ĐÍCH CỦA UPPINGHAM SCHOOL LÀ TRUYỀN CẢM HỨNG CHO THANH THIẾU NIÊN VỀ TƯƠNG LAI BẰNG CÁCH TRAO QUYỀN CHO CÁC EM KỸ NĂNG, HOÀI BÃO VÀ SỰ TỰ TIN ĐỂ TỰ ĐỊNH HÌNH CON ĐƯỜNG CỦA MÌNH TRONG CUỘC SỐNG, CÙNG VỚI TINH THẦN TRÁCH NHIỆM ĐỂ XÂY DỰNG MỘT TƯƠNG LAI TỐT ĐẸP HƠN CHO CỘNG ĐỒNG.",
     "backgroundImage": "/home/scrolling-text-bg.jpg",
     "backgroundAlt": "Học sinh Uppingham ngoài trời"
+  },
+  "learning": {
+    "sectionLabel": "Giáo dục",
+    "eyebrow": "Giáo dục",
+    "heading": "MỤC ĐÍCH & ƯU TIÊN",
+    "previousButton": "Slide trước",
+    "nextButton": "Slide tiếp theo",
+    "slideButton": "Chuyển đến slide {index}",
+    "slides": {
+      "holistic": {
+        "title": "PHÁT TRIỂN TOÀN DIỆN",
+        "image": "/home/early-year.jpg"
+      },
+      "enrichment": {
+        "title": "XUẤT SẮC TRONG HOẠT ĐỘNG BỒI DƯỠNG",
+        "image": "/home/primary.jpg"
+      },
+      "global": {
+        "title": "NHẬN THỨC TOÀN CẦU",
+        "image": "/home/secondary.jpg"
+      },
+      "character": {
+        "title": "BỒI ĐẮP NHÂN CÁCH",
+        "image": "/home/classroom.jpg"
+      }
+    }
   }
 }

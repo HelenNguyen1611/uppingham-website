@@ -36,7 +36,7 @@ export function ScrollingText({
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     observer.observe(section);
@@ -49,58 +49,62 @@ export function ScrollingText({
       ref={sectionRef}
       className={cn(
         'relative w-full aspect-[1920/1080] overflow-hidden z-20',
-        className
+        className,
       )}
     >
       <Image
-          src={resolvedBackgroundSrc}
-          alt={resolvedBackgroundAlt}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
+        src={resolvedBackgroundSrc}
+        alt={resolvedBackgroundAlt}
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+      />
       {/* <div className="absolute inset-0 bg-black/35" /> */}
       <div className="container h-full">
-        <div className="relative flex items-center justify-center h-full w-full max-w-[72%] lg:max-w-[60%] mx-auto">
-            <div className={cn('w-full text-center', hasEntered && 'animate-scroll-diagonal')}>
-              {text.split(' ').map((word, wordIndex) => (
-                <span
-                  key={`${word}-${wordIndex}`}
-                  className="inline-flex whitespace-nowrap"
-                >
-                  {word.split('').map((char, charIndex) => (
-                    <span
-                      key={`${word}-${char}-${charIndex}`}
-                      className={cn(
-                        'inline-block text-white uppercase text-[clamp(24px,2vw,36px)] leading-[1.38]',
-                        hasEntered && 'animate-fadeinup-char'
-                      )}
-                      style={{
-                        animationDelay: `${(wordIndex * 8 + charIndex) * 15}ms`,
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
+        <div className="relative flex items-center justify-center h-full w-full max-w-[72%] lg:max-w-[82%] mx-auto">
+          <div
+            className={cn(
+              'w-full text-center',
+              hasEntered && 'animate-scroll-diagonal',
+            )}
+          >
+            {text.split(' ').map((word, wordIndex) => (
+              <span
+                key={`${word}-${wordIndex}`}
+                className="inline-flex whitespace-nowrap"
+              >
+                {word.split('').map((char, charIndex) => (
                   <span
-                    aria-hidden="true"
+                    key={`${word}-${char}-${charIndex}`}
                     className={cn(
                       'inline-block text-white uppercase text-[clamp(24px,2vw,36px)] leading-[1.38]',
-                      hasEntered && 'animate-fadeinup-char'
+                      hasEntered && 'animate-fadeinup-char',
                     )}
                     style={{
-                      animationDelay: `${(wordIndex * 8 + word.length) * 15}ms`,
+                      animationDelay: `${(wordIndex * 8 + charIndex) * 15}ms`,
                     }}
                   >
-                    &nbsp;
+                    {char}
                   </span>
+                ))}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'inline-block text-white uppercase text-[clamp(24px,2vw,36px)] leading-[1.38]',
+                    hasEntered && 'animate-fadeinup-char',
+                  )}
+                  style={{
+                    animationDelay: `${(wordIndex * 8 + word.length) * 15}ms`,
+                  }}
+                >
+                  &nbsp;
                 </span>
-              ))}
-            </div>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-      
     </section>
   );
 }
