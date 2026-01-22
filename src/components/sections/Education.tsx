@@ -20,6 +20,8 @@ export function Education() {
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const sliderRef = React.useRef<HTMLDivElement>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: false,
@@ -103,6 +105,32 @@ export function Education() {
       emblaApi.off('reInit', handleSelect);
     };
   }, [emblaApi, handleSelect]);
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    const slider = sliderRef.current;
+    if (!container || !slider) {
+      return;
+    }
+
+    const updateContainerWidth = () => {
+      slider.style.setProperty(
+        '--container-width',
+        `${container.offsetWidth}px`,
+      );
+    };
+
+    updateContainerWidth();
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const observer = new ResizeObserver(updateContainerWidth);
+      observer.observe(container);
+      return () => observer.disconnect();
+    }
+
+    window.addEventListener('resize', updateContainerWidth, { passive: true });
+    return () => window.removeEventListener('resize', updateContainerWidth);
+  }, []);
 
   return (
     <section className="relative mt-25 z-20" aria-label={t('sectionLabel')}>
@@ -191,14 +219,17 @@ export function Education() {
       </div>
 
       <div className="mt-0">
-        <div className="container">
-          <div className="relative -mr-[calc((100vw-100%)/2)] bg-stone py-25 ">
+        <div className="container" ref={containerRef}>
+          <div
+            ref={sliderRef}
+            className="relative -mr-[calc((100vw-100%)/2)] bg-stone py-25"
+          >
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex gap-[30px] mr-6">
                 {slides.map((slide) => (
                   <div
                     key={slide.id}
-                    className="flex flex-col justify-between gap-8 min-w-0 flex-[0_0_56%] sm:flex-[0_0_35%] lg:flex-[0_0_22.3%] xxl:flex-[0_0_22.8%] pr-[30px] border-r border-dark-stone"
+                    className="flex flex-col justify-between gap-8 min-w-0 flex-[0_0_56%] sm:flex-[0_0_35%] lg:flex-[0_0_calc(calc(var(--container-width)/4)-30px)] pr-[30px] border-r border-dark-stone"
                   >
                     <div className="flex flex-col gap-8">
                       <div className="w-full h-[1px] bg-dark-stone h-[1px]"></div>

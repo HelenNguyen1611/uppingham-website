@@ -88,30 +88,32 @@ export function News() {
                     hoverZoom
                   />
                 </div>
-                <Text
-                  as="span"
-                  variant="menuFooter"
-                  align="left"
-                  className="text-primary/70"
-                >
-                  {item.date}
-                </Text>
-                <Heading
-                  as="h3"
-                  variant="h4"
-                  align="left"
-                  className="text-secondary"
-                >
-                  {item.title}
-                </Heading>
-                <Text
-                  as="p"
-                  variant="menuFooter"
-                  align="left"
-                  className="text-primary"
-                >
-                  {item.description}
-                </Text>
+                <div className="flex flex-col gap-4">
+                  <Text
+                    as="span"
+                    variant="menuFooter"
+                    align="left"
+                    className="text-primary/70"
+                  >
+                    {item.date}
+                  </Text>
+                  <Heading
+                    as="h3"
+                    variant="h4"
+                    align="left"
+                    className="text-secondary font-tag normal-case mb-2"
+                  >
+                    {item.title}
+                  </Heading>
+                  <Text
+                    as="p"
+                    variant="body"
+                    align="left"
+                    className="text-primary"
+                  >
+                    {item.description}
+                  </Text>
+                </div>
               </div>
 
               <div className="w-full h-[1px] bg-dark-stone h-[1px]"></div>
