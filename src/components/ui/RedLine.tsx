@@ -10,6 +10,7 @@ type RedLineProps = {
 
 export function RedLine({ className, autoFillFirstFold = true }: RedLineProps) {
   const [lineHeight, setLineHeight] = React.useState(0);
+  const [useScreenBlend, setUseScreenBlend] = React.useState(false);
 
   const rafIntroRef = React.useRef<number | null>(null);
   const rafFollowRef = React.useRef<number | null>(null);
@@ -194,10 +195,47 @@ export function RedLine({ className, autoFillFirstFold = true }: RedLineProps) {
     };
   }, [autoFillFirstFold]);
 
+  React.useEffect(() => {
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-redline-blend="screen"]'),
+    );
+
+    if (!targets.length || typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    let activeCount = 0;
+    const stateMap = new Map<Element, boolean>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const wasActive = stateMap.get(entry.target) ?? false;
+          const isActive = entry.isIntersecting;
+
+          if (isActive === wasActive) {
+            return;
+          }
+
+          stateMap.set(entry.target, isActive);
+          activeCount += isActive ? 1 : -1;
+        });
+
+        setUseScreenBlend(activeCount > 0);
+      },
+      { threshold: 0.1 },
+    );
+
+    targets.forEach((target) => observer.observe(target));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
       className={cn(
-        'absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full pointer-events-none z-10 red-line mix-blend-multiply',
+        'absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full pointer-events-none z-10 red-line ',
+        useScreenBlend && 'red-line--screen',
         className,
       )}
       style={{

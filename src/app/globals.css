@@ -127,6 +127,7 @@ body {
 }
 
 
+
 /* Custom heading font-size utilities */
 @layer utilities {
   .text-heading-h1 {
@@ -167,6 +168,10 @@ body {
   .animate-redline-delay {
     transform-origin: top;
     animation: redLineReveal 400ms ease-out 400ms both;
+  }
+
+  .red-line--screen {
+    mix-blend-mode: screen;
   }
 
 

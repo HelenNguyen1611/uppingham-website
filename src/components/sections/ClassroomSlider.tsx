@@ -107,7 +107,7 @@ export function ClassroomSlider() {
             aria-label={t('previousButton')}
             className={cn(
               'absolute left-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-full border border-primary/30 bg-stone p-3 text-primary transition hover:border-primary lg:flex',
-              !hasMultipleSlides && 'cursor-not-allowed opacity-40'
+              !hasMultipleSlides && 'cursor-not-allowed opacity-40',
             )}
           >
             <span className="sr-only">{t('previousButton')}</span>
@@ -119,17 +119,18 @@ export function ClassroomSlider() {
               stroke="currentColor"
               strokeWidth="1.5"
             >
-              <path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M15 5l-7 7 7 7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {slides.map((slide) => (
-                <div
-                  key={slide.id}
-                  className="min-w-0 flex-[0_0_100%] px-0"
-                >
+                <div key={slide.id} className="min-w-0 flex-[0_0_100%] px-0">
                   <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
                       <Image
@@ -178,7 +179,7 @@ export function ClassroomSlider() {
                     'h-2.5 w-2.5 rounded-full border border-primary transition',
                     index === selectedIndex
                       ? 'bg-primary'
-                      : 'bg-transparent hover:border-primary/70'
+                      : 'bg-transparent hover:border-primary/70',
                   )}
                 />
               ))}
@@ -192,7 +193,7 @@ export function ClassroomSlider() {
             aria-label={t('nextButton')}
             className={cn(
               'absolute right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-full border border-primary/30 bg-stone p-3 text-primary transition hover:border-primary lg:flex',
-              !hasMultipleSlides && 'cursor-not-allowed opacity-40'
+              !hasMultipleSlides && 'cursor-not-allowed opacity-40',
             )}
           >
             <span className="sr-only">{t('nextButton')}</span>
@@ -204,7 +205,11 @@ export function ClassroomSlider() {
               stroke="currentColor"
               strokeWidth="1.5"
             >
-              <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M9 5l7 7-7 7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>

@@ -207,5 +207,34 @@
     "helpText": "We're here to help. <u>Contact us.</u>",
     "image": "/home/download.jpg",
     "imageAlt": "Uppingham prospectus booklet"
+  },
+  "footer": {
+    "copyright": "Uppingham School © {year}",
+    "address": {
+      "title": "Address",
+      "phone": "+84 76 866 8080",
+      "email": "forward@uppingham.edu.vn",
+      "location": "Level 5, HM Town, 412 Nguyen Thi Minh Khai, Ward 5, District 3, Hochiminh City, Vietnam",
+      "contactUs": "Contact us",
+      "directions": "Directions",
+      "whereToStay": "Where to stay"
+    },
+    "quickLinks": {
+      "title": "Quick links",
+      "admissions": "Admissions",
+      "careers": "Careers",
+      "calendar": "Calendar"
+    },
+    "connect": {
+      "title": "Connect with us",
+      "instagram": "Instagram",
+      "youtube": "Youtube",
+      "facebook": "Facebook"
+    },
+    "policies": {
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy"
+    },
+    "designer": "Website designed by WOO Group."
   }
 }

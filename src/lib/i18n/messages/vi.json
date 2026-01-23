@@ -222,5 +222,34 @@
     "helpText": "Chúng tôi luôn sẵn sàng hỗ trợ. <u>Liên hệ.</u>",
     "image": "/home/download.jpg",
     "imageAlt": "Ấn phẩm giới thiệu Uppingham"
+  },
+  "footer": {
+    "copyright": "Uppingham School © {year}",
+    "address": {
+      "title": "Địa chỉ",
+      "phone": "+84 76 866 8080",
+      "email": "forward@uppingham.edu.vn",
+      "location": "Tầng 5, HM Town, 412 Nguyễn Thị Minh Khai, Phường 5, Quận 3, Thành phố Hồ Chí Minh, Việt Nam",
+      "contactUs": "Liên hệ",
+      "directions": "Chỉ đường",
+      "whereToStay": "Nơi ở"
+    },
+    "quickLinks": {
+      "title": "Liên kết nhanh",
+      "admissions": "Tuyển sinh",
+      "careers": "Tuyển dụng",
+      "calendar": "Lịch học"
+    },
+    "connect": {
+      "title": "Kết nối với chúng tôi",
+      "instagram": "Instagram",
+      "youtube": "Youtube",
+      "facebook": "Facebook"
+    },
+    "policies": {
+      "terms": "Điều khoản & Điều kiện",
+      "privacy": "Chính sách bảo mật"
+    },
+    "designer": "Website được thiết kế bởi WOO Group."
   }
 }

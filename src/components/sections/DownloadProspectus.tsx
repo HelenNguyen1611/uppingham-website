@@ -8,9 +8,12 @@ export function DownloadProspectus() {
   const t = useTranslations('downloadProspectus');
 
   return (
-    <section className="relative bg-secondary text-white py-25">
+    <section
+      className="relative bg-secondary text-white py-25"
+      data-redline-blend="screen"
+    >
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 items-center lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-20 lg:gap-18">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-20 lg:gap-18">
           <div className="flex flex-col gap-8 justify-between ">
             <div className="flex flex-col gap-8">
               <Heading as="h2" variant="h2" align="left">
@@ -30,12 +33,7 @@ export function DownloadProspectus() {
                 </Button>
               </div>
             </div>
-            <Text
-              as="p"
-              variant="menuFooter"
-              align="left"
-              className="text-white/80"
-            >
+            <Text as="p" variant="body" align="left" className="text-white/80">
               {t.rich('helpText', {
                 u: (chunks) => <u>{chunks}</u>,
               })}
