@@ -38,7 +38,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center"
+              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center cursor-pointer"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
