@@ -229,22 +229,33 @@ export function SiteFooter() {
 
           {/* Column 3: Quick Links */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-secondary font-tt-norms font-[450] text-base mb-2">
+            <Text
+              as="h3"
+              variant="smallHeading"
+              align="left"
+              className="text-secondary mb-2"
+            >
               {t('quickLinks.title')}
-            </h3>
-            <div className="flex flex-col gap-2">
-              <Link href={`/${locale}/admissions`} variant="smallHeading">
+            </Text>
+            <div className="flex flex-col gap-5">
+              <Link
+                href={`/${locale}/admissions`}
+                variant="body"
+                className="text-primary"
+              >
                 {t('quickLinks.admissions')}
               </Link>
               <Link
                 href={`/${locale}/careers`}
-                className="text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity"
+                variant="body"
+                className="text-primary"
               >
                 {t('quickLinks.careers')}
               </Link>
               <Link
                 href={`/${locale}/calendar`}
-                className="text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity"
+                variant="body"
+                className="text-primary"
               >
                 {t('quickLinks.calendar')}
               </Link>
@@ -253,58 +264,123 @@ export function SiteFooter() {
 
           {/* Column 4: Connect with us */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-secondary font-tt-norms font-[450] text-base mb-2">
+            <Text
+              as="h3"
+              variant="smallHeading"
+              align="left"
+              className="text-secondary mb-2"
+            >
               {t('connect.title')}
-            </h3>
-            <div className="flex flex-col gap-3">
-              <a
+            </Text>
+            <div className="flex flex-col gap-5">
+              <Link
                 href="https://instagram.com/uppinghamvietnam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity group"
+                className="flex items-center gap-5"
               >
-                <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
-                  <InstagramIcon className="text-white w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
+                    fill="none"
+                  >
+                    <path
+                      d="M8.0599 11.3971C9.90081 11.3971 11.3932 9.90472 11.3932 8.0638C11.3932 6.22285 9.90081 4.73047 8.0599 4.73047C6.21895 4.73047 4.72656 6.22285 4.72656 8.0638C4.72656 9.90472 6.21895 11.3971 8.0599 11.3971Z"
+                      stroke="white"
+                      stroke-width="1.125"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M0.5625 11.3958V4.72917C0.5625 2.42798 2.42798 0.5625 4.72917 0.5625H11.3958C13.697 0.5625 15.5625 2.42798 15.5625 4.72917V11.3958C15.5625 13.697 13.697 15.5625 11.3958 15.5625H4.72917C2.42798 15.5625 0.5625 13.697 0.5625 11.3958Z"
+                      stroke="white"
+                      stroke-width="1.125"
+                    />
+                    <path
+                      d="M12.6445 3.49044L12.6544 3.47949"
+                      stroke="white"
+                      stroke-width="1.125"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </div>
-                <span>{t('connect.instagram')}</span>
-              </a>
-              <a
+                <Text as="span" variant="body" className="text-primary">
+                  {t('connect.instagram')}
+                </Text>
+              </Link>
+              <Link
                 href="https://youtube.com/@uppinghamvietnam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity group"
+                className="flex items-center gap-5"
               >
-                <div className="w-6 h-6 rounded bg-secondary flex items-center justify-center">
-                  <YoutubeIcon className="text-white w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
+                    fill="none"
+                  >
+                    <path
+                      d="M15.4966 4.41375C15.415 4.08747 15.2487 3.78852 15.0145 3.54709C14.7803 3.30567 14.4865 3.13031 14.1629 3.03875C12.9804 2.75 8.25039 2.75 8.25039 2.75C8.25039 2.75 3.52039 2.75 2.33789 3.06625C2.01425 3.15781 1.7205 3.33317 1.48632 3.57459C1.25214 3.81602 1.08581 4.11497 1.00414 4.44125C0.787728 5.64132 0.681868 6.85871 0.687893 8.07812C0.680179 9.30672 0.786046 10.5334 1.00414 11.7425C1.09418 12.0586 1.26423 12.3462 1.49787 12.5775C1.73151 12.8087 2.02083 12.9757 2.33789 13.0625C3.52039 13.3787 8.25039 13.3787 8.25039 13.3787C8.25039 13.3787 12.9804 13.3787 14.1629 13.0625C14.4865 12.9709 14.7803 12.7956 15.0145 12.5542C15.2487 12.3127 15.415 12.0138 15.4966 11.6875C15.7114 10.4965 15.8172 9.28835 15.8129 8.07812C15.8206 6.84953 15.7147 5.62285 15.4966 4.41375Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M6.70312 10.3273L10.6562 8.07918L6.70312 5.83105V10.3273Z"
+                      fill="#E13246"
+                    />
+                  </svg>
                 </div>
-                <span>{t('connect.youtube')}</span>
-              </a>
-              <a
+                <Text as="span" variant="body" className="text-primary">
+                  {t('connect.youtube')}
+                </Text>
+              </Link>
+              <Link
                 href="https://facebook.com/uppinghamvietnam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity group"
+                className="flex items-center gap-5"
               >
-                <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
-                  <FacebookIcon className="text-white w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="8"
+                    height="14"
+                    viewBox="0 0 8 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.5 0H5.45455C4.55039 0 3.68325 0.359168 3.04398 0.998502C2.40462 1.63783 2.04545 2.50495 2.04545 3.40909V5.45455H0V8.18182H2.04545V13.6364H4.77273V8.18182H6.81818L7.5 5.45455H4.77273V3.40909C4.77273 3.22826 4.84459 3.05484 4.97243 2.92697C5.10027 2.79911 5.27373 2.72727 5.45455 2.72727H7.5V0Z"
+                      fill="white"
+                    />
+                  </svg>
                 </div>
-                <span>{t('connect.facebook')}</span>
-              </a>
+                <Text as="span" variant="body" className="text-primary">
+                  {t('connect.facebook')}
+                </Text>
+              </Link>
             </div>
           </div>
 
           {/* Column 5: Policies */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2 mt-8 md:mt-0">
+            <div className="flex flex-col gap-5">
               <Link
                 href={`/${locale}/terms`}
-                className="text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity"
+                variant="body"
+                className="text-primary"
               >
                 {t('policies.terms')}
               </Link>
               <Link
                 href={`/${locale}/privacy`}
-                className="text-primary-dark-blue font-tt-norms text-sm hover:opacity-80 transition-opacity"
+                variant="body"
+                className="text-primary"
               >
                 {t('policies.privacy')}
               </Link>
@@ -313,10 +389,10 @@ export function SiteFooter() {
         </div>
 
         {/* Accreditation Logos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 border-t border-neutral-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 ">
           <div className="flex items-center justify-center">
             <Image
-              src="/images/accreditations/oxford-aqa.png"
+              src="/home/oxford.svg"
               alt="Oxford AQA International Qualifications Approved Centre"
               width={150}
               height={80}
@@ -325,7 +401,7 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center justify-center">
             <Image
-              src="/images/accreditations/century-intelligent-learning.png"
+              src="/home/century.svg"
               alt="Century Intelligent Learning"
               width={150}
               height={80}
@@ -334,7 +410,7 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center justify-center">
             <Image
-              src="/images/accreditations/ipg-iseb.png"
+              src="/home/ipq.svg"
               alt="IPG Gold School / ISEB"
               width={120}
               height={80}
@@ -343,7 +419,7 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center justify-center">
             <Image
-              src="/images/accreditations/isi.png"
+              src="/home/isi.svg"
               alt="ISI Independent Schools Inspectorate"
               width={120}
               height={80}
