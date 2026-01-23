@@ -38,17 +38,44 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-[#00003C] hover:opacity-80 transition-opacity w-[50px] h-[50px]"
+              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
-              <Image
-                src={images.humberger}
-                alt="Hamburger Menu"
-                width={50}
-                height={50}
-                className="object-contain"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="27"
+                height="18"
+                viewBox="0 0 27 18"
+                fill="none"
+              >
+                {/* Line 1 - Top */}
+                <path
+                  d="M0 1H27"
+                  stroke="#00003C"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  className="transition-all duration-300"
+                />
+                {/* Line 2 - Middle (will shorten on hover) */}
+                <g className="menu-line-middle-group">
+                  <path
+                    d="M0 9H27"
+                    stroke="#00003C"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                    className="transition-all duration-300"
+                  />
+                </g>
+                {/* Line 3 - Bottom */}
+                <path
+                  d="M0 17H27"
+                  stroke="#00003C"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  className="transition-all duration-300"
+                />
+              </svg>
             </button>
 
             {/* Navigation Links (Desktop) */}
@@ -121,7 +148,7 @@ export function SiteHeader() {
                   strokeLinejoin="round"
                   className={cn(
                     'transition-transform',
-                    isPortalsOpen && 'rotate-180'
+                    isPortalsOpen && 'rotate-180',
                   )}
                 >
                   <polyline points="6 9 12 15 18 9" />
@@ -133,7 +160,7 @@ export function SiteHeader() {
                 <div
                   className={cn(
                     'font-tt-norms font-[450] absolute left-[-10px] right-0 mt-2 rounded-md  z-50',
-                    locale === 'vi' ? 'w-52' : 'w-34'
+                    locale === 'vi' ? 'w-52' : 'w-34',
                   )}
                 >
                   <Link
@@ -172,7 +199,7 @@ export function SiteHeader() {
                     'font-tt-norms font-[450] text-sm uppercase px-2 py-1 transition-opacity cursor-pointer',
                     locale === loc
                       ? 'text-primary font-[750]'
-                      : ' text-primary opacity-15'
+                      : ' text-primary opacity-15',
                   )}
                 >
                   {loc === 'en' ? 'EN' : 'VT'}
@@ -226,7 +253,7 @@ export function SiteHeader() {
                     strokeLinejoin="round"
                     className={cn(
                       'transition-transform',
-                      isPortalsOpen && 'rotate-180'
+                      isPortalsOpen && 'rotate-180',
                     )}
                   >
                     <polyline points="6 9 12 15 18 9" />

@@ -181,4 +181,14 @@ body {
     opacity: 0;
     animation: fadeInUp 600ms ease-out forwards;
   }
+
+  .menu-line-middle-group {
+    transform-origin: left center;
+    transition: transform 300ms ease;
+    transform: scaleX(1);
+  }
+
+  .group:hover .menu-line-middle-group {
+    transform: scaleX(0.5);
+  }
 }
