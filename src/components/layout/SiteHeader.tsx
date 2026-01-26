@@ -101,14 +101,14 @@ export function SiteHeader() {
                 <path
                   d="M24.7109 0.707031L0.710938 24.707"
                   stroke="#00003C"
-                  stroke-width="2"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M0.710938 0.707031L24.7109 24.707"
                   stroke="#00003C"
-                  stroke-width="2"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
