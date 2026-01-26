@@ -236,5 +236,88 @@
       "privacy": "Privacy Policy"
     },
     "designer": "Website designed by WOO Group."
+  },
+  "menu": {
+    "homepage": "HOMEPAGE",
+    "about": "ABOUT",
+    "learning": "LEARNING",
+    "life": "LIFE",
+    "ourCampuses": "OUR CAMPUSES",
+    "admissions": "ADMISSIONS",
+    "community": "COMMUNITY",
+    "news": "NEWS",
+    "contact": "CONTACT",
+    "aboutSubmenu": {
+      "headmasterWelcome": "Headmaster's welcome",
+      "uppinghamVietnam": "Uppingham Vietnam",
+      "ourPhilosophy": "Our Philosophy of Holistic Education",
+      "governanceAdvisoryBoard": "Governance & Advisory Board",
+      "purposePriorities": "Purpose & Priorities",
+      "meetOurTeam": "Meet our team",
+      "heritageLegacy": "Heritage and Legacy"
+    },
+    "learningSubmenu": {
+      "academicLife": "Academic life",
+      "internationalCurriculum": "International Curriculum",
+      "bilingualCurriculum": "Bilingual Curriculum",
+      "academicSupport": "Academic Support",
+      "academicResults": "Academic Results",
+      "calendarTimetable": "Calendar & Timetable"
+    },
+    "learningSubmenu2": {
+      "internationalCurriculum": {
+        "juniorSchool": "Junior School",
+        "seniorSchool": "Senior School",
+        "sixthForm": "Sixth Form"
+      }
+    },
+    "lifeSubmenu": {
+      "houseStructure": "House Structure",
+      "pastoralCare": "Pastoral care",
+      "coCurricularActivities": "Co-curricular activities",
+      "enrichmentProgramme": "Enrichment programme",
+      "busService": "Bus service"
+    },
+    "lifeSubmenu2": {
+      "houseStructure": {
+        "introduction": "Introduction",
+        "typicalDay": "A typical day",
+        "house1": "House 1",
+        "house2": "House 2",
+        "house3": "House 3"
+      },
+      "coCurricularActivities": {
+        "sport": "Sport",
+        "music": "Music",
+        "theatre": "Theatre",
+        "artDesignTechnology": "Art, design & Technology"
+      }
+    },
+    "ourCampusesSubmenu": {
+      "hungYenCampus": "Hung Yen Campus",
+      "dongNaiCampus": "Dong Nai Campus",
+      "bookATour": "Book a tour"
+    },
+    "admissionsSubmenu": {
+      "joinUppingham": "Join Uppingham",
+      "visitingTheSchool": "Visiting the school",
+      "admissionsGuide": "Admissions guide",
+      "downloadProspectus": "Download our prospectus",
+      "tuitionsFees": "Tuitions & Fees",
+      "termDates": "Term dates",
+      "registration": "Registration",
+      "scholarships": "Scholarships",
+      "schoolShops": "School shops"
+    },
+    "communitySubmenu": {
+      "parentsPortal": "Parents portal",
+      "studentsPortal": "Students portal",
+      "staffPortal": "Staff portal",
+      "oldUppinghamians": "Old Uppinghamians (OUs)"
+    },
+    "contactSubmenu": {
+      "contactUs": "Contact us",
+      "careers": "Careers"
+    }
   }
 }

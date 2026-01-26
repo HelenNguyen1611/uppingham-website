@@ -251,5 +251,88 @@
       "privacy": "Chính sách bảo mật"
     },
     "designer": "Website được thiết kế bởi WOO Group."
+  },
+  "menu": {
+    "homepage": "TRANG CHỦ",
+    "about": "GIỚI THIỆU",
+    "learning": "HỌC TẬP",
+    "life": "ĐỜI SỐNG",
+    "ourCampuses": "CƠ SỞ",
+    "admissions": "TUYỂN SINH",
+    "community": "CỘNG ĐỒNG",
+    "news": "TIN TỨC",
+    "contact": "LIÊN HỆ",
+    "aboutSubmenu": {
+      "headmasterWelcome": "Lời chào mừng của hiệu trưởng",
+      "uppinghamVietnam": "Uppingham Vietnam",
+      "ourPhilosophy": "Triết lý giáo dục toàn diện",
+      "governanceAdvisoryBoard": "Quản trị & Hội đồng tư vấn",
+      "purposePriorities": "Mục đích & Ưu tiên",
+      "meetOurTeam": "Gặp gỡ đội ngũ",
+      "heritageLegacy": "Di sản và Truyền thống"
+    },
+    "learningSubmenu": {
+      "academicLife": "Đời sống học thuật",
+      "internationalCurriculum": "Chương trình quốc tế",
+      "bilingualCurriculum": "Chương trình song ngữ",
+      "academicSupport": "Hỗ trợ học thuật",
+      "academicResults": "Kết quả học thuật",
+      "calendarTimetable": "Lịch học & Thời khóa biểu"
+    },
+    "learningSubmenu2": {
+      "internationalCurriculum": {
+        "juniorSchool": "Tiểu học",
+        "seniorSchool": "Trung học",
+        "sixthForm": "Lớp 12-13"
+      }
+    },
+    "lifeSubmenu": {
+      "houseStructure": "Cấu trúc nhà",
+      "pastoralCare": "Chăm sóc mục vụ",
+      "coCurricularActivities": "Hoạt động ngoại khóa",
+      "enrichmentProgramme": "Chương trình phong phú",
+      "busService": "Dịch vụ xe buýt"
+    },
+    "lifeSubmenu2": {
+      "houseStructure": {
+        "introduction": "Giới thiệu",
+        "typicalDay": "Một ngày điển hình",
+        "house1": "Nhà 1",
+        "house2": "Nhà 2",
+        "house3": "Nhà 3"
+      },
+      "coCurricularActivities": {
+        "sport": "Thể thao",
+        "music": "Âm nhạc",
+        "theatre": "Sân khấu",
+        "artDesignTechnology": "Nghệ thuật, Thiết kế & Công nghệ"
+      }
+    },
+    "ourCampusesSubmenu": {
+      "hungYenCampus": "Cơ sở Hưng Yên",
+      "dongNaiCampus": "Cơ sở Đồng Nai",
+      "bookATour": "Đặt lịch tham quan"
+    },
+    "admissionsSubmenu": {
+      "joinUppingham": "Tham gia Uppingham",
+      "visitingTheSchool": "Tham quan trường",
+      "admissionsGuide": "Hướng dẫn tuyển sinh",
+      "downloadProspectus": "Tải ấn phẩm giới thiệu",
+      "tuitionsFees": "Học phí & Phí",
+      "termDates": "Lịch học kỳ",
+      "registration": "Đăng ký",
+      "scholarships": "Học bổng",
+      "schoolShops": "Cửa hàng trường"
+    },
+    "communitySubmenu": {
+      "parentsPortal": "Cổng truy cập phụ huynh",
+      "studentsPortal": "Cổng truy cập học sinh",
+      "staffPortal": "Cổng truy cập nhân viên",
+      "oldUppinghamians": "Cựu học sinh Uppingham (OUs)"
+    },
+    "contactSubmenu": {
+      "contactUs": "Liên hệ",
+      "careers": "Tuyển dụng"
+    }
   }
 }

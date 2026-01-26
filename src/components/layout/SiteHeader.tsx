@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils/cn';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { images } from '@/assets';
+import { FullScreenMenu } from './FullScreenMenu';
 
 export function SiteHeader() {
   const locale = useLocale() as Locale;
@@ -29,7 +30,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className=" top-0 z-50 w-full bg-stone py-11">
+    <header className="relative top-0 z-50 w-full bg-stone py-11">
       <div className="container">
         <div className="flex items-center justify-between h-15">
           {/* Left Section: Hamburger Menu + Navigation Links */}
@@ -38,16 +39,21 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center cursor-pointer"
+              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center cursor-pointer relative"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
+              {/* Hamburger Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="27"
                 height="18"
                 viewBox="0 0 27 18"
                 fill="none"
+                className={cn(
+                  'transition-opacity duration-300 absolute',
+                  isMobileMenuOpen ? 'opacity-0' : 'opacity-100',
+                )}
               >
                 {/* Line 1 - Top */}
                 <path
@@ -74,6 +80,31 @@ export function SiteHeader() {
                   strokeWidth="2"
                   strokeLinejoin="round"
                   className="transition-all duration-300"
+                />
+              </svg>
+              {/* Close Icon (X) */}
+              <svg
+                className={cn(
+                  'transition-opacity duration-300 absolute',
+                  isMobileMenuOpen ? 'opacity-100' : 'opacity-0',
+                )}
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+              >
+                <path
+                  d="M24.7109 0.707031L0.710938 24.707"
+                  stroke="#00003C"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M0.710938 0.707031L24.7109 24.707"
+                  stroke="#00003C"
+                  stroke-width="2"
+                  stroke-linejoin="round"
                 />
               </svg>
             </button>
@@ -219,104 +250,13 @@ export function SiteHeader() {
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-neutral-200 py-4">
-            <nav className="flex flex-col gap-4">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.key}
-                  href={link.href}
-                  className="text-primary font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity px-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t(link.key)}
-                </Link>
-              ))}
-              {/* Mobile Portals */}
-              <div className="px-2">
-                <button
-                  type="button"
-                  onClick={() => setIsPortalsOpen(!isPortalsOpen)}
-                  className="flex items-center justify-between w-full text-primary font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
-                >
-                  <span>{t('portals')}</span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={cn(
-                      'transition-transform',
-                      isPortalsOpen && 'rotate-180',
-                    )}
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </button>
-                {isPortalsOpen && (
-                  <div className="mt-2 pl-4 flex flex-col gap-2">
-                    <Link
-                      href={`/${locale}/student-portal`}
-                      className="font-tt-norms font-[450] text-sm text-pri hover:opacity-80 transition-opacity"
-                      onClick={() => {
-                        setIsPortalsOpen(false);
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      Student Portal
-                    </Link>
-                    <Link
-                      href={`/${locale}/parent-portal`}
-                      className="font-tt-norms font-[450] text-sm text-[#00003C] hover:opacity-80 transition-opacity"
-                      onClick={() => {
-                        setIsPortalsOpen(false);
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      Parent Portal
-                    </Link>
-                    <Link
-                      href={`/${locale}/staff-portal`}
-                      className="font-tt-norms font-[450] text-sm text-[#00003C] hover:opacity-80 transition-opacity"
-                      onClick={() => {
-                        setIsPortalsOpen(false);
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      Staff Portal
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
 
-      {/* Click outside to close dropdowns */}
-      {(isPortalsOpen || isMobileMenuOpen) && (
-        <div
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={() => {
-            setIsPortalsOpen(false);
-            setIsMobileMenuOpen(false);
-          }}
-          aria-hidden="true"
-        />
-      )}
-      {isPortalsOpen && (
-        <div
-          className="hidden md:block fixed inset-0 z-40"
-          onClick={() => setIsPortalsOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {/* Full Screen Menu */}
+      <FullScreenMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
     </header>
   );
 }
