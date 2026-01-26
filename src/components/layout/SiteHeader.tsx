@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { cn } from '@/lib/utils/cn';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { images } from '@/assets';
 import { FullScreenMenu } from './FullScreenMenu';
+import { useRouter, usePathname, Link } from '@/lib/i18n/navigation';
 
 export function SiteHeader() {
   const locale = useLocale() as Locale;
@@ -19,14 +18,14 @@ export function SiteHeader() {
   const [isPortalsOpen, setIsPortalsOpen] = useState(false);
 
   const switchLocale = (newLocale: Locale) => {
-    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPathname);
+    // useRouter from next-intl automatically handles translated URLs
+    router.push(pathname, { locale: newLocale });
   };
 
   const navigationLinks = [
-    { key: 'contact', href: `/${locale}/contact` },
-    { key: 'admissions', href: `/${locale}/admissions` },
-    { key: 'careers', href: `/${locale}/careers` },
+    { key: 'contact', href: '/contact' as const },
+    { key: 'admissions', href: '/admissions' as const },
+    { key: 'careers', href: '/careers' as const },
   ];
 
   return (
@@ -119,7 +118,7 @@ export function SiteHeader() {
               {navigationLinks.map((link) => (
                 <Link
                   key={link.key}
-                  href={link.href}
+                  href={link.href as any}
                   className="text-[#00003C] font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
                 >
                   {t(link.key)}
@@ -131,7 +130,7 @@ export function SiteHeader() {
           {/* Center Section: Logo */}
           <div className="w-full flex items-center justify-center">
             <Link
-              href={`/${locale}`}
+              href="/"
               className="flex flex-col items-center hover:opacity-80 transition-opacity w-[209px] h-[50px]"
             >
               <Image
@@ -200,21 +199,21 @@ export function SiteHeader() {
                   )}
                 >
                   <Link
-                    href={`/${locale}/student-portal`}
+                    href="/student-portal"
                     className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >
                     {t('studentPortal')}
                   </Link>
                   <Link
-                    href={`/${locale}/parent-portal`}
+                    href="/parent-portal"
                     className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >
                     {t('parentPortal')}
                   </Link>
                   <Link
-                    href={`/${locale}/staff-portal`}
+                    href="/staff-portal"
                     className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
                     onClick={() => setIsPortalsOpen(false)}
                   >

@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { Locale } from '@/lib/i18n/config';
 import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
 import { Quicklink } from '@/components/ui/Quicklink';
+import { getLocalizedPathname } from '@/lib/i18n/navigation';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = getPageContent('contact');
@@ -21,8 +22,8 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const content = getPageContent('contact');
   const menuItems = [
-    { key: 'contactUs', href: `/${locale}/contact` },
-    { key: 'careers', href: `/${locale}/careers` },
+    { key: 'contactUs', href: getLocalizedPathname('/contact', locale) },
+    { key: 'careers', href: getLocalizedPathname('/careers', locale) },
   ];
 
   if (!content) {

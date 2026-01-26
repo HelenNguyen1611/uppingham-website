@@ -83,7 +83,7 @@ export function Quicklink({
               'block py-4 text-primary font-[450] hover:text-secondary transition-colors font-tt-norms',
               level === 0
                 ? cn('text-[20px] ', parentPadding)
-                : cn('text-sm pl-[30px]', subPadding),
+                : cn('text-[16px] pl-[30px]', subPadding),
             )}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -181,7 +181,7 @@ export function Quicklink({
                 {/* Header */}
                 {menuTitle && (
                   <div className="mb-4">
-                    <h3 className="text-secondary text-[15px] font-[450] text-sm uppercase mb-2 font-tt-norms">
+                    <h3 className="text-secondary text-[15px] font-[450] text-[16px] uppercase mb-2 font-tt-norms">
                       {menuTitle}
                     </h3>
                   </div>
