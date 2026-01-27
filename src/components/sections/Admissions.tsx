@@ -14,7 +14,7 @@ export function Admissions() {
       id: 'early-years',
       ageRange: t('earlyYears.ageRange'),
       name: t('earlyYears.name'),
-      image: '/home/early-year.jpg',
+      image: '/home/junior.jpg',
       imageAlt: t('earlyYears.imageAlt'),
     },
     {

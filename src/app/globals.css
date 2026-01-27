@@ -80,6 +80,17 @@ body {
   font-size: var(--font-size);
 }
 
+/* Locale-based font mapping for Tag font */
+body {
+  /* Default to EN tag font; fallback to VI if EN isn't available */
+  --font-tag: var(--font-tag-en, var(--font-tag-vi));
+}
+
+html[lang="vi"] body {
+  /* Prefer VI tag font; fallback to EN if VI isn't available */
+  --font-tag: var(--font-tag-vi, var(--font-tag-en));
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

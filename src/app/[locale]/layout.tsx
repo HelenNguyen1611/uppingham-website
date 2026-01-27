@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n/config';
+import { HtmlLangSync } from '@/components/i18n/HtmlLangSync';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 
@@ -24,6 +25,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale as Locale} messages={messages}>
+      <HtmlLangSync locale={locale} />
       <div className="flex flex-col min-h-screen relative">
         <SiteHeader />
         <main className="flex-1 relative">{children}</main>

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Domaine Text';
+    src: url('DomaineText-Regular.woff2') format('woff2'),
+        url('DomaineText-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Domaine Display';
+    src: url('DomaineDisplay-Regular.woff2') format('woff2'),
+        url('DomaineDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -87,8 +87,9 @@ export default async function HomePage({ params }: HomePageProps) {
       <HeroSection />
       <VideoSection />
       <Headmaster />
-      <ClassroomSlider />
       <Campus />
+      {/* <ClassroomSlider /> */}
+
       <Admissions />
       <ScrollingText />
       <Education />

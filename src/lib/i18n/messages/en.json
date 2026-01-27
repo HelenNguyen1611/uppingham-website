@@ -48,19 +48,19 @@
     "slogan": "OPENING MINDS. OPENING FUTURES.",
     "earlyYears": {
       "ageRange": "Age 2-5",
-      "name": "EARLY YEARS",
+      "name": "Junior school",
       "image": "/images/admissions/early-years.jpg",
       "imageAlt": "Early Years students"
     },
     "primary": {
       "ageRange": "Age 5-11",
-      "name": "PRIMARY",
+      "name": "senior school",
       "image": "/images/admissions/primary.jpg",
       "imageAlt": "Primary students"
     },
     "secondary": {
       "ageRange": "Age 11-16",
-      "name": "SECONDARY",
+      "name": "sixth form",
       "image": "/images/admissions/secondary.jpg",
       "imageAlt": "Secondary students"
     }

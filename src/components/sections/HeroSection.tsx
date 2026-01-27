@@ -48,7 +48,7 @@ export function HeroSection() {
               as="p"
               variant="body"
               align="center"
-              className={cn('text-secondary text-xl font-tt-norms font-[450]')}
+              className={cn('text-secondary text-xl font-tag font-[450]')}
             >
               {t('tagline')}
             </Text>
@@ -59,7 +59,7 @@ export function HeroSection() {
               variant="body"
               align="center"
               className={cn(
-                'text-primary text-xl font-tt-norms font-[400] leading-relaxed'
+                'text-primary text-xl font-tt-norms font-[400] leading-relaxed',
               )}
             >
               {t('description')}
