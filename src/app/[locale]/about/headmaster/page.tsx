@@ -4,7 +4,11 @@ import { Metadata } from 'next';
 import { Locale } from '@/lib/i18n/config';
 import { RedLineWrapper } from '@/components/ui/RedLineWrapper';
 import { Quicklink } from '@/components/ui/Quicklink';
-import { HeroImage, Headmaster, PageNavButtons } from '@/components/sections';
+import {
+  HeroImage,
+  HeadmasterWelcome,
+  PageNavButtons,
+} from '@/components/sections';
 import { getMenuData } from '@/lib/data/menu';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -26,6 +30,24 @@ export default async function HeadmasterPage({ params }: HeadmasterPageProps) {
   const { locale } = await params;
   const tHero = await getTranslations('headmasterPage.hero');
   const tMenu = await getTranslations('menu');
+
+  // Bypass next-intl formatter for bodyHtml: ICU parses <p> as placeholder "p" and throws FORMATTING_ERROR.
+  const messages = (await import(`@/lib/i18n/messages/${locale}.json`))
+    .default as {
+    headmasterWelcome?: {
+      bodyHtml?: string;
+      imageSrc?: string;
+      heading?: string;
+      tagline?: string;
+    };
+    aboutBottomNavItems?: Record<string, { label?: string; href?: string }>;
+  };
+
+  const bodyHtml = messages.headmasterWelcome?.bodyHtml ?? '';
+  const imageSrc = messages.headmasterWelcome?.imageSrc ?? '';
+  const heading = messages.headmasterWelcome?.heading ?? '';
+  const tagline = messages.headmasterWelcome?.tagline ?? '';
+
   const menuData = getMenuData(locale);
   const aboutChildren = menuData.find((m) => m.key === 'about')?.children ?? [];
 
@@ -59,6 +81,17 @@ export default async function HeadmasterPage({ params }: HeadmasterPageProps) {
       href: `/${locale}/about/heritage`,
     },
   ];
+  const aboutBottomNavRaw = messages.aboutBottomNavItems ?? {};
+  const aboutBottomNavItems = (
+    ['admissions', 'contact', 'careers'] as const
+  ).map((key) => {
+    const item = aboutBottomNavRaw[key];
+    const path = item?.href ?? `/${key}`;
+    return {
+      label: item?.label ?? key,
+      href: `/${locale}${path}`,
+    };
+  });
 
   return (
     <>
@@ -77,8 +110,12 @@ export default async function HeadmasterPage({ params }: HeadmasterPageProps) {
         headingVariant="h1"
         showCta={false}
       />
-      <Headmaster />
-      <PageNavButtons items={navItems} />
+      <HeadmasterWelcome
+        imageSrc={imageSrc}
+        heading={heading}
+        bodyHtml={bodyHtml}
+      />
+      <PageNavButtons items={aboutBottomNavItems} />
     </>
   );
 }

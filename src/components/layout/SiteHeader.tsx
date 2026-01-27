@@ -3,24 +3,21 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
+
 import { cn } from '@/lib/utils/cn';
 import { locales, type Locale } from '@/lib/i18n/config';
+import { Link, getPathname, usePathname } from '@/lib/i18n/navigation';
+
 import { images } from '@/assets';
 import { FullScreenMenu } from './FullScreenMenu';
-import { useRouter, usePathname, Link } from '@/lib/i18n/navigation';
 
 export function SiteHeader() {
   const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
   const t = useTranslations('common');
+  const pathname = usePathname();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPortalsOpen, setIsPortalsOpen] = useState(false);
-
-  const switchLocale = (newLocale: Locale) => {
-    // useRouter from next-intl automatically handles translated URLs
-    router.push(pathname, { locale: newLocale });
-  };
 
   const navigationLinks = [
     { key: 'contact', href: '/contact' as const },
@@ -28,26 +25,32 @@ export function SiteHeader() {
     { key: 'careers', href: '/careers' as const },
   ];
 
+  const portalsLinks = [
+    { key: 'studentPortal', href: '/student-portal' as const },
+    { key: 'parentPortal', href: '/parent-portal' as const },
+    { key: 'staffPortal', href: '/staff-portal' as const },
+  ];
+
   return (
     <header
       className={cn(
-        'relative top-0  w-full bg-stone py-11',
+        'relative top-0 w-full bg-stone py-11',
         isMobileMenuOpen ? 'z-70' : 'z-50',
       )}
     >
       <div className="container">
         <div className="flex items-center justify-between h-15">
-          {/* Left Section: Hamburger Menu + Navigation Links */}
-          <div className="flex w-full flex-row items-center justify-start gap-5 md:gap-12 cursor-pointer">
-            {/* Hamburger Menu (Mobile) */}
+          {/* Left: Hamburger + Nav */}
+          <div className="flex w-full items-center justify-start gap-5 md:gap-12">
+            {/* Hamburger (Mobile) */}
             <button
               type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="group text-[#00003C] w-[50px] h-[50px] flex items-center justify-center cursor-pointer relative"
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              className="group w-[50px] h-[50px] flex items-center justify-center relative"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
-              {/* Hamburger Icon */}
+              {/* Hamburger icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="27"
@@ -55,48 +58,26 @@ export function SiteHeader() {
                 viewBox="0 0 27 18"
                 fill="none"
                 className={cn(
-                  'transition-opacity duration-300 absolute',
+                  'absolute transition-opacity duration-300',
                   isMobileMenuOpen ? 'opacity-0' : 'opacity-100',
                 )}
               >
-                {/* Line 1 - Top */}
-                <path
-                  d="M0 1H27"
-                  stroke="#00003C"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                  className="transition-all duration-300"
-                />
-                {/* Line 2 - Middle (will shorten on hover) */}
-                <g className="menu-line-middle-group">
-                  <path
-                    d="M0 9H27"
-                    stroke="#00003C"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                    className="transition-all duration-300"
-                  />
-                </g>
-                {/* Line 3 - Bottom */}
-                <path
-                  d="M0 17H27"
-                  stroke="#00003C"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                  className="transition-all duration-300"
-                />
+                <path d="M0 1H27" stroke="#00003C" strokeWidth="2" />
+                <path d="M0 9H27" stroke="#00003C" strokeWidth="2" />
+                <path d="M0 17H27" stroke="#00003C" strokeWidth="2" />
               </svg>
-              {/* Close Icon (X) */}
+
+              {/* Close icon */}
               <svg
-                className={cn(
-                  'transition-opacity duration-300 absolute',
-                  isMobileMenuOpen ? 'opacity-100' : 'opacity-0',
-                )}
                 xmlns="http://www.w3.org/2000/svg"
                 width="26"
                 height="26"
                 viewBox="0 0 26 26"
                 fill="none"
+                className={cn(
+                  'absolute transition-opacity duration-300',
+                  isMobileMenuOpen ? 'opacity-100' : 'opacity-0',
+                )}
               >
                 <path
                   d="M24.7109 0.707031L0.710938 24.707"
@@ -113,12 +94,12 @@ export function SiteHeader() {
               </svg>
             </button>
 
-            {/* Navigation Links (Desktop) */}
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-start gap-5">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.key}
-                  href={link.href as any}
+                  href={link.href}
                   className="text-[#00003C] font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
                 >
                   {t(link.key)}
@@ -127,7 +108,7 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          {/* Center Section: Logo */}
+          {/* Center: Logo */}
           <div className="w-full flex items-center justify-center">
             <Link
               href="/"
@@ -143,13 +124,13 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          {/* Right Section: Portals, Language Switcher, Crest Logo */}
+          {/* Right: Portals + Language + Crest */}
           <div className="flex w-full items-center justify-end gap-4 md:gap-6">
             {/* Portals Dropdown */}
             <div className="relative hidden md:block">
               <button
                 type="button"
-                onClick={() => setIsPortalsOpen(!isPortalsOpen)}
+                onClick={() => setIsPortalsOpen((v) => !v)}
                 className="flex items-center gap-2 text-[#00003C] font-tt-norms font-[450] text-base hover:opacity-80 transition-opacity"
                 aria-expanded={isPortalsOpen}
                 aria-haspopup="true"
@@ -190,55 +171,44 @@ export function SiteHeader() {
                 </svg>
               </button>
 
-              {/* Portals Dropdown Menu */}
+              {/* Dropdown menu */}
               {isPortalsOpen && (
                 <div
                   className={cn(
-                    'font-tt-norms font-[450] absolute left-[-10px] right-0 mt-2 rounded-md  z-50',
+                    'font-tt-norms font-[450] absolute left-[-10px] right-0 mt-2 rounded-md z-50',
                     locale === 'vi' ? 'w-52' : 'w-34',
                   )}
                 >
-                  <Link
-                    href="/student-portal"
-                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
-                    onClick={() => setIsPortalsOpen(false)}
-                  >
-                    {t('studentPortal')}
-                  </Link>
-                  <Link
-                    href="/parent-portal"
-                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
-                    onClick={() => setIsPortalsOpen(false)}
-                  >
-                    {t('parentPortal')}
-                  </Link>
-                  <Link
-                    href="/staff-portal"
-                    className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
-                    onClick={() => setIsPortalsOpen(false)}
-                  >
-                    {t('staffPortal')}
-                  </Link>
+                  {portalsLinks.map((item) => (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      className="block px-3 py-2 text-base text-primary hover:text-red transition-colors"
+                      onClick={() => setIsPortalsOpen(false)}
+                    >
+                      {t(item.key)}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
 
-            {/* Language Switcher */}
+            {/* ✅ Language Switcher (always resolves translated pathnames) */}
             <div className="flex items-center gap-2">
               {locales.map((loc) => (
-                <button
+                <Link
                   key={loc}
-                  type="button"
-                  onClick={() => switchLocale(loc)}
+                  href={pathname}
+                  locale={loc}
                   className={cn(
                     'font-tt-norms font-[450] text-sm uppercase px-2 py-1 transition-opacity cursor-pointer',
                     locale === loc
                       ? 'text-primary font-[750]'
-                      : ' text-primary opacity-15',
+                      : 'text-primary opacity-20',
                   )}
                 >
                   {loc === 'en' ? 'EN' : 'VT'}
-                </button>
+                </Link>
               ))}
             </div>
 

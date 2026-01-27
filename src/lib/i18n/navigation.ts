@@ -18,3 +18,16 @@ export function getLocalizedPathname(
   // Fallback: if pathname not in mapping, return with locale prefix
   return `/${locale}${pathname}`;
 }
+
+/**
+ * Build full localized URL for any pathname (with or without pathnames mapping).
+ * Use in locale switcher so navigation goes to the correct vi/en URL.
+ */
+export function getLocalizedHref(pathname: string, locale: Locale): string {
+  const key = pathname as keyof typeof pathnames;
+  const config = pathnames[key];
+  if (config && typeof config === 'object' && locale in config) {
+    return `/${locale}${(config as Record<Locale, string>)[locale]}`;
+  }
+  return `/${locale}${pathname.startsWith('/') ? pathname.slice(1) : pathname}`;
+}

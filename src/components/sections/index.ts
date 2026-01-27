@@ -3,6 +3,7 @@ export * from './Campus';
 export * from './ClassroomSlider';
 export * from './Education';
 export * from './Headmaster';
+export * from './HeadmasterWelcome';
 export * from './HeroImage';
 export * from './PageNavButtons';
 export * from './HeroSection';
