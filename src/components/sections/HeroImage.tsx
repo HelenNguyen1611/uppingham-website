@@ -13,6 +13,8 @@ type HeroImageProps = {
   heading?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** When false, CTA button is hidden. When undefined, button shows if both ctaLabel and ctaHref (or defaults) are set. */
+  showCta?: boolean;
   headingAs?: 'h1' | 'h2';
   headingVariant?: 'h1' | 'h2';
 };
@@ -25,18 +27,22 @@ export function HeroImage({
   heading,
   ctaLabel,
   ctaHref,
+  showCta: showCtaProp,
   headingAs = 'h1',
   headingVariant = 'h1',
 }: HeroImageProps) {
   const t = useTranslations('heroImage');
 
   const resolvedImageSrc = imageSrc ?? t('imageSrc');
-  const resolvedImageAlt = imageAlt ?? t('imageAlt');
+  const resolvedImageAlt = imageAlt ?? t('heading');
   const resolvedEyebrow = eyebrow ?? t('eyebrow');
   const resolvedHeading = heading ?? t('heading');
   const resolvedCtaLabel = ctaLabel ?? t('ctaLabel');
   const resolvedCtaHref = ctaHref ?? t('ctaHref');
-  const showCta = Boolean(resolvedCtaLabel && resolvedCtaHref);
+  const showCta =
+    showCtaProp !== undefined
+      ? showCtaProp
+      : Boolean(resolvedCtaLabel && resolvedCtaHref);
 
   return (
     <section className={cn(' relative z-20 overflow-hidden', className)}>
@@ -56,9 +62,9 @@ export function HeroImage({
             {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" /> */}
           </div>
           {/* Content */}
-          <div className="relative z-10 flex w-full flex-col items-center justify-center gap-0 text-center ratio-1680/886">
+          <div className="relative z-10 flex w-full flex-col items-center justify-center gap-0 text-center aspect-1680/886">
             {/* Line 1: from top to above heading (stops before "WHERE TOMORROW'S LEADERS ARE MADE") */}
-            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)]  bg-red mx-auto relative z-10 animate-redline" /> 
+            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)]  bg-red mx-auto relative z-10 animate-redline" />
             <div className="wrap-conttent-hero relative py-[50px]">
               <Heading
                 as="h3"
@@ -76,18 +82,21 @@ export function HeroImage({
                 {resolvedHeading}
               </Heading>
               {showCta ? (
-                <Button href={resolvedCtaHref} variant="primary" size="lg" className="min-w-[300px] hover:border-white hover:bg-transparent hover:text-white"> 
+                <Button
+                  href={resolvedCtaHref}
+                  variant="primary"
+                  size="lg"
+                  className="min-w-[300px] hover:border-white hover:bg-transparent hover:text-white"
+                >
                   {resolvedCtaLabel}
                 </Button>
               ) : null}
             </div>
             {/* Line 2: from heading to bottom (between button and tagline text) */}
-            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)] bg-red mx-auto relative z-10 animate-redline-delay" /> 
+            <div className="w-[1px] flex-1 min-h-[clamp(80px,8vh,138px)] bg-red mx-auto relative z-10 animate-redline-delay" />
           </div>
         </div>
       </div>
-        
-      
     </section>
   );
 }

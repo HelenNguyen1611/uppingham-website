@@ -29,13 +29,13 @@ export default function CareersPage() {
   // Option 2: Call sections directly (component-driven)
   return (
     <>
-    <RedLineWrapper autoFillFirstFold= { true} />
-    <HeroImage />
-    <ClassroomSlider />
-    <Headmaster />
-    <VideoSection />
-    <Campus />
-    <Admissions />
+      <RedLineWrapper autoFillFirstFold={true} />
+      <HeroImage />
+      <ClassroomSlider />
+      <Headmaster />
+      <VideoSection />
+      <Campus />
+      <Admissions />
     </>
   );
 }

@@ -4,6 +4,7 @@ export * from './ClassroomSlider';
 export * from './Education';
 export * from './Headmaster';
 export * from './HeroImage';
+export * from './PageNavButtons';
 export * from './HeroSection';
 export * from './Learning';
 export * from './FormAdmissions';

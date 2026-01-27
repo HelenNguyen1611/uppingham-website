@@ -26,6 +26,13 @@
     "imageSrc": "/images/headmaster.jpg",
     "imageAlt": "Hiệu trưởng"
   },
+  "headmasterPage": {
+    "hero": {
+      "eyebrow": "Về chúng tôi",
+      "heading": "LỜI CHÀO MỪNG CỦA HIỆU TRƯỞNG",
+      "imageSrc": "about/headmaster/HeroImage.jpg"
+    }
+  },
   "campus": {
     "discoverButton": "Khám phá cơ sở",
     "hungYen": {

@@ -26,6 +26,13 @@
     "imageSrc": "/images/headmaster.jpg",
     "imageAlt": "Headmaster"
   },
+  "headmasterPage": {
+    "hero": {
+      "eyebrow": "About",
+      "heading": "HEADMASTER'S WELCOME",
+      "imageSrc": "/about/headmaster/HeroImage.jpg"
+    }
+  },
   "campus": {
     "discoverButton": "Discover Campus",
     "hungYen": {
